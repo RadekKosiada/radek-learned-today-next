@@ -12,7 +12,8 @@
     "contentful": "^10.6.3",
     "next": "13.5.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-markdown": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
