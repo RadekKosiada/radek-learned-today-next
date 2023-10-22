@@ -4,26 +4,27 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import { client } from "../lib/contentful/client";
 import Image from "next/image";
+import { TypePost, responseType } from "../../../types/contentful/TypePost";
+import { getPosts } from "../posts/page";
 
 export default async function Slug({ params }: { params: { slug: string } }) {
     const { slug } = params;
-    const response = await client.getEntries({
-        content_type: "post",
-        "fields.slug": slug,
-    });
+    const response: responseType = await getPosts();
 
     const { items } = response;
 
-    const {
-        fields: { title, category, publishDate, body },
-    } = items[0];
+    const post: TypePost | undefined = items.find(
+        (item) => item.fields.slug === slug
+    );
+
+    const { title, category, publishDate, body } = (post || {}).fields || {};
 
     return (
         <>
             <Header />
             <Link href="/">Home</Link>
 
-            <h3>{title}</h3>
+            {title && <h3>{title}</h3>}
             {category?.fields.icon?.fields.file && (
                 <Image
                     src={`https:${category.fields.icon.fields.file.url}`}
@@ -34,10 +35,10 @@ export default async function Slug({ params }: { params: { slug: string } }) {
             )}
 
             {/* <p>created at: {item.sys.createdAt}</p> */}
-            <p>published at: {publishDate}</p>
+            {publishDate && <p>published at: {publishDate}</p>}
             {category && <p>category: {category.fields.title}</p>}
 
-            <ReactMarkdown>{body}</ReactMarkdown>
+            {body && <ReactMarkdown>{body}</ReactMarkdown>}
             <p>slug: {slug}</p>
 
             <Footer />

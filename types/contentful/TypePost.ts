@@ -11,3 +11,7 @@ export interface TypePostFields {
 }
 
 export type TypePost = Entry<TypePostFields>;
+
+export type responseType = {
+    items: TypePost[];
+};
