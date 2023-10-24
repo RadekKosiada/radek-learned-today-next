@@ -6,6 +6,7 @@ import { client } from "../lib/contentful/client";
 
 import { TypePost } from "../../../types/contentful";
 import { responseType } from "../../../types/contentful/TypePost";
+import AboutComponent from "../components/about";
 
 // https://nextjs.org/docs/app/building-your-application/caching#request-memoization
 export async function getPosts() {
@@ -24,6 +25,10 @@ export default async function Posts() {
         <>
             <div className={styles.postContainer}>
                 <div>
+                    <AboutComponent
+                        title={"About"}
+                        text={"Hallo this is about"}
+                    />
                     <h1 className={styles.postsHeader}>Posts</h1>
                     <ul className={styles.postsWrapper}>
                         {postsArray.map((post: TypePost) => {

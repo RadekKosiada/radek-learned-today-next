@@ -1,13 +1,12 @@
-import Link from "next/link";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import AboutComponent from "../components/about";
 
-export default function About() {
+export default function AboutPage() {
     return (
         <>
             <Header />
-            <h1>About me</h1>
-            <p>placeholder paragraph</p>
+            <AboutComponent title="About me" text="hallo about me" />
             <Footer />
         </>
     );
