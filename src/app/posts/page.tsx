@@ -22,26 +22,28 @@ export default async function Posts() {
 
     return (
         <>
-            <h1>Posts</h1>
             <div className={styles.postContainer}>
-                <div className={styles.postsWrapper}>
-                    {postsArray.map((post: TypePost) => {
-                        const {
-                            sys,
-                            fields: { title, category, slug },
-                        } = post || {};
+                <div>
+                    <h1 className={styles.postsHeader}>Posts</h1>
+                    <ul className={styles.postsWrapper}>
+                        {postsArray.map((post: TypePost) => {
+                            const {
+                                sys,
+                                fields: { title, category, slug },
+                            } = post || {};
 
-                        return (
-                            <div className={styles.post} key={sys.id}>
-                                <Link href={`/${slug}`}>
-                                    <h3>{title}</h3>
-                                </Link>
-                                {category && (
-                                    <p>category: {category.fields.title}</p>
-                                )}
-                            </div>
-                        );
-                    })}
+                            return (
+                                <li className={styles.post} key={sys.id}>
+                                    <Link href={`/${slug}`}>
+                                        <h3>{title}</h3>
+                                    </Link>
+                                    {category && (
+                                        <p>category: {category.fields.title}</p>
+                                    )}
+                                </li>
+                            );
+                        })}
+                    </ul>
                 </div>
             </div>
         </>

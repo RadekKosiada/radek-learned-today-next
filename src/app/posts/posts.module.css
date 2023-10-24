@@ -3,29 +3,37 @@
     display: grid;
     justify-items: center;    
 }
-.postsWrapper {
-    display: grid;
-    grid-gap: 10px;
+
+.postsHeader {
+    justify-self: start;
     padding: 0 20px;
 }
 
-.post {
+ul.postsWrapper {
+    display: grid;
+    grid-gap: 10px;
+    padding: 0 20px;
+    list-style-type: none
+
+}
+
+li.post {
     border: 1px solid black;
     margin-top: 10px;
     
 }
  
 @media screen and (min-width: 480px) {
-    .postsWrapper {
+    ul.postsWrapper {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));  
     }
 }
 
 @media screen and (min-width: 769px) {
-    .post {
+    li.post {
         width: 200px;
     }
-    .postsWrapper {
+    ul.postsWrapper {
     grid-template-columns: repeat(3, 1fr);
     }
 }
