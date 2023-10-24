@@ -1,8 +1,9 @@
 import Link from "next/link";
+import styles from "./header.module.css";
 
 export default function Header({ isHome }: { isHome?: boolean }) {
     return (
-        <header>
+        <header className={styles.headerWrapper}>
             <nav>
                 <ul>
                     <li>
