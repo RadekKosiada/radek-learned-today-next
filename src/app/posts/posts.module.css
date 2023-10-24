@@ -1,4 +1,45 @@
+
+.postContainer {
+    display: grid;
+    justify-items: center;    
+}
+.postsWrapper {
+    display: grid;
+    grid-gap: 10px;
+}
+
 .post {
     border: 1px solid black;
     margin-top: 10px;
+    width: 250px;
 }
+ 
+@media screen and (min-width: 480px) {
+    .postsWrapper {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));  
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .postsWrapper {
+    grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media screen and (min-width: 1200px) {
+    .postsWrapper {    
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+}
+
+
+
+/* 
+320px — 480px: Mobile devices 481px — 768px: iPads,
+Tablets 769px — 1024px: Small screens,
+laptops 1025px — 1200px: Desktops,
+large screens 1201px and more — Extra large screens,
+TV
+*/
