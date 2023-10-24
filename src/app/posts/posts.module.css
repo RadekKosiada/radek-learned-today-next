@@ -6,12 +6,13 @@
 .postsWrapper {
     display: grid;
     grid-gap: 10px;
+    padding: 0 20px;
 }
 
 .post {
     border: 1px solid black;
     margin-top: 10px;
-    width: 250px;
+    
 }
  
 @media screen and (min-width: 480px) {
@@ -21,6 +22,9 @@
 }
 
 @media screen and (min-width: 769px) {
+    .post {
+        width: 200px;
+    }
     .postsWrapper {
     grid-template-columns: repeat(3, 1fr);
     }
