@@ -21,8 +21,6 @@ export default async function Slug({ params }: { params: { slug: string } }) {
     return (
         <>
             <Header />
-            <Link href="/">Home</Link>
-
             {title && <h3>{title}</h3>}
             {category?.fields.icon?.fields.file && (
                 <Image

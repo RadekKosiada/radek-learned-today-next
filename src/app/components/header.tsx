@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Header() {
+export default function Header({ isHome }: { isHome?: boolean }) {
     return (
         <header>
             <nav>
@@ -8,9 +8,11 @@ export default function Header() {
                     <li>
                         <Link href="/about">About me</Link>
                     </li>
-                    <li>
-                        <Link href="/">Home</Link>
-                    </li>
+                    {!isHome && (
+                        <li>
+                            <Link href="/">Home</Link>
+                        </li>
+                    )}
                 </ul>
             </nav>
         </header>
