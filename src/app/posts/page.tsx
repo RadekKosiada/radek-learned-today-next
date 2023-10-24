@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Footer from "../components/footer";
-import Header from "../components/header";
 
 import styles from "./posts.module.css";
 

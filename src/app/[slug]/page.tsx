@@ -2,7 +2,6 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import { client } from "../lib/contentful/client";
 import Image from "next/image";
 import { TypePost, responseType } from "../../../types/contentful/TypePost";
 import { getPosts } from "../posts/page";

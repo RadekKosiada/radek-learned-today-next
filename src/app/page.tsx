@@ -1,6 +1,3 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Link from "next/link";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Posts from "./posts/page";
