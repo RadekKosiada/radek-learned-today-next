@@ -6,8 +6,8 @@ export default function About() {
     return (
         <>
             <Header />
-            <Link href="/">Home</Link>
-            <h1>About</h1>
+            <h1>About me</h1>
+            <p>placeholder paragraph</p>
             <Footer />
         </>
     );

@@ -25,8 +25,6 @@ export default async function Posts() {
 
     return (
         <>
-            <Header />
-            <Link href="/">Home</Link>
             <h1>Posts</h1>
             {postsArray.map((post: TypePost) => {
                 const {
@@ -43,7 +41,6 @@ export default async function Posts() {
                     </div>
                 );
             })}
-            <Footer />
         </>
     );
 }
