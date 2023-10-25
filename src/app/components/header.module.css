@@ -8,4 +8,10 @@
     list-style-type: none;
     grid-template-columns: 1fr 1fr;
     min-width: 200px;
+    
+   
+}
+
+ul.singleColumn {
+    direction: rtl; 
 }

@@ -5,15 +5,15 @@ export default function Header({ isHome }: { isHome?: boolean }) {
     return (
         <header className={styles.headerWrapper}>
             <nav>
-                <ul>
-                    <li>
-                        <Link href="/about">About me</Link>
-                    </li>
+                <ul className={isHome ? styles.singleColumn : ""}>
                     {!isHome && (
                         <li>
                             <Link href="/">Home</Link>
                         </li>
                     )}
+                    <li>
+                        <Link href="/about">About me</Link>
+                    </li>
                 </ul>
             </nav>
         </header>
