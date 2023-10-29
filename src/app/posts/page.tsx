@@ -1,16 +1,14 @@
 import Link from "next/link";
 
 import styles from "./posts.module.css";
-import Image from "next/image";
 
 import { client } from "../lib/contentful/client";
 
 import { TypePost } from "../../../types/contentful";
-import { responseTypePosts } from "../../../types/contentful/TypePost";
 import {
-    responseTypeCategories,
-    TypeCategory,
+    responseTypeCategories
 } from "../../../types/contentful/TypeCategory";
+import { responseTypePosts } from "../../../types/contentful/TypePost";
 import AboutComponent from "../components/about";
 import CategoriesFilters from "../components/filtersCategory";
 
