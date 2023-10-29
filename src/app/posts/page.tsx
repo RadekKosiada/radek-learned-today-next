@@ -1,25 +1,41 @@
 import Link from "next/link";
 
 import styles from "./posts.module.css";
+import Image from "next/image";
 
 import { client } from "../lib/contentful/client";
 
 import { TypePost } from "../../../types/contentful";
-import { responseType } from "../../../types/contentful/TypePost";
+import { responseTypePosts } from "../../../types/contentful/TypePost";
+import {
+    responseTypeCategories,
+    TypeCategory,
+} from "../../../types/contentful/TypeCategory";
 import AboutComponent from "../components/about";
+import CategoriesFilters from "../components/filtersCategory";
 
 // https://nextjs.org/docs/app/building-your-application/caching#request-memoization
 export async function getPosts() {
-    const response: responseType = await client.getEntries({
+    const response: responseTypePosts = await client.getEntries({
         content_type: "post",
     });
     return response;
 }
 
-export default async function Posts() {
-    const response = await getPosts();
+export async function getCategories() {
+    const response: responseTypeCategories = await client.getEntries({
+        content_type: "category",
+    });
+    return response;
+}
 
-    const { items: postsArray } = response;
+export default async function Posts() {
+    const responsePosts = await getPosts();
+
+    const responseCategories = await getCategories();
+
+    const { items: postsArray } = responsePosts;
+    const { items: categoriesArray } = responseCategories;
 
     return (
         <>
@@ -30,6 +46,9 @@ export default async function Posts() {
                         text={"Hallo this is about"}
                     />
                     <h1 className={styles.postsHeader}>Posts</h1>
+
+                    <CategoriesFilters />
+
                     <ul className={styles.postsWrapper}>
                         {postsArray.map((post: TypePost) => {
                             const {

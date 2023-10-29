@@ -7,3 +7,7 @@ export interface TypeCategoryFields {
 }
 
 export type TypeCategory = Entry<TypeCategoryFields>;
+
+export type responseTypeCategories = {
+    items: TypeCategory[];
+};
