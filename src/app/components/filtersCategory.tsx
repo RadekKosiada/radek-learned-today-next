@@ -26,9 +26,9 @@ export default async function CategoriesFilters() {
                 {categoriesArray.map((category: TypeCategory) => {
                     const {
                         sys,
-                        fields: { title, icon },
+                        fields: { title },
                     } = category || {};
-                    return <li key={sys.id}>{title}</li>;
+                    return <li className={styles.categoryFilter} key={sys.id}>{title}</li>;
                 })}
             </ul>
         </>
