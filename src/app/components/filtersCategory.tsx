@@ -28,7 +28,11 @@ export default async function CategoriesFilters() {
                         sys,
                         fields: { title },
                     } = category || {};
-                    return <li className={styles.categoryFilter} key={sys.id}>{title}</li>;
+                    return (
+                        <li className={styles.categoryFilter} key={sys.id}>
+                            {title}
+                        </li>
+                    );
                 })}
             </ul>
         </>

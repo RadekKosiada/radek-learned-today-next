@@ -5,9 +5,6 @@ import styles from "./posts.module.css";
 import { client } from "../lib/contentful/client";
 
 import { TypePost } from "../../../types/contentful";
-import {
-    responseTypeCategories
-} from "../../../types/contentful/TypeCategory";
 import { responseTypePosts } from "../../../types/contentful/TypePost";
 import AboutComponent from "../components/about";
 import CategoriesFilters from "../components/filtersCategory";
@@ -20,20 +17,10 @@ export async function getPosts() {
     return response;
 }
 
-export async function getCategories() {
-    const response: responseTypeCategories = await client.getEntries({
-        content_type: "category",
-    });
-    return response;
-}
-
 export default async function Posts() {
     const responsePosts = await getPosts();
 
-    const responseCategories = await getCategories();
-
     const { items: postsArray } = responsePosts;
-    const { items: categoriesArray } = responseCategories;
 
     return (
         <>
