@@ -1,23 +1,25 @@
-import { client } from "../lib/contentful/client";
+"use client";
 
-import {
-    responseTypeCategories,
-    TypeCategory,
-} from "../../../types/contentful/TypeCategory";
+import { TypeCategory } from "../../../types/contentful/TypeCategory";
 
+import { useState } from "react";
 import styles from "./filtersCategory.module.css";
 
-export async function getCategories() {
-    const response: responseTypeCategories = await client.getEntries({
-        content_type: "category",
-    });
-    return response;
-}
+export default function CategoriesFilters({
+    categoriesArray,
+}: {
+    categoriesArray: TypeCategory[];
+}) {
+    const [activeCategories, setActiveCategories] = useState([""]);
 
-export default async function CategoriesFilters() {
-    const responseCategories = await getCategories();
+    const handleClick = (category: string) => {
+        console.log("CAT: ", category);
+        // check if already
+        // if yes, delete, if no add
+        setActiveCategories([...activeCategories, category]);
+    };
 
-    const { items: categoriesArray } = responseCategories;
+    console.log("AC: ", activeCategories);
 
     return (
         <>
@@ -29,7 +31,13 @@ export default async function CategoriesFilters() {
                         fields: { title },
                     } = category || {};
                     return (
-                        <li className={styles.categoryFilter} key={sys.id}>
+                        <li
+                            onClick={() =>
+                                title && handleClick(title)
+                            }
+                            className={styles.categoryFilter}
+                            key={sys.id}
+                        >
                             {title}
                         </li>
                     );
