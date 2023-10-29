@@ -1,4 +1,5 @@
-{"exportDir": "contentful",
-"contentFile": "export.json",
-"downloadAssets": false
+{
+    "exportDir": "contentful",
+    "contentFile": "export.json",
+    "downloadAssets": false
 }

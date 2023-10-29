@@ -5,7 +5,7 @@ import AboutComponent from "../components/about";
 export default function AboutPage() {
     return (
         <>
-            <Header />
+                <Header />
             <AboutComponent title="About me" text="hallo about me" />
             <Footer />
         </>
