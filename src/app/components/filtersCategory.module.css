@@ -13,7 +13,13 @@ li.categoryFilter {
     cursor: pointer;
 }
 
+.filterIsActive {
+    background-color: grey;
+    color: white;
+}
+
 li.categoryFilter:hover {
     background-color: grey;
     color: white;
+    opacity: 0.8;
 }

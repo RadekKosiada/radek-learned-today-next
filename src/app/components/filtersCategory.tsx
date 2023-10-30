@@ -10,16 +10,25 @@ export default function CategoriesFilters({
 }: {
     categoriesArray: TypeCategory[];
 }) {
-    const [activeCategories, setActiveCategories] = useState([""]);
+    const [activeCategories, setActiveCategories] = useState(Array<string>);
 
     const handleClick = (category: string) => {
-        console.log("CAT: ", category);
-        // check if already
-        // if yes, delete, if no add
-        setActiveCategories([...activeCategories, category]);
+        if (!activeCategories.includes(category)) {
+            setActiveCategories([...activeCategories, category]);
+
+            categoriesArray.map((item) => {
+                if (item.fields.title === category) {
+                }
+            });
+        } else {
+            const newActiveCategories = activeCategories.filter(
+                (item) => item !== category
+            );
+            setActiveCategories(newActiveCategories);
+        }
     };
 
-    console.log("AC: ", activeCategories);
+    console.log(categoriesArray);
 
     return (
         <>
@@ -30,12 +39,18 @@ export default function CategoriesFilters({
                         sys,
                         fields: { title },
                     } = category || {};
+
+                    const isFilterActive =
+                        title && activeCategories.includes(title);
+                    const categoryClassName = [
+                        styles.categoryFilter,
+                        isFilterActive ? styles.filterIsActive : "",
+                    ].join(" ");
+
                     return (
                         <li
-                            onClick={() =>
-                                title && handleClick(title)
-                            }
-                            className={styles.categoryFilter}
+                            onClick={() => title && handleClick(title)}
+                            className={categoryClassName}
                             key={sys.id}
                         >
                             {title}
