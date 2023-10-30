@@ -25,6 +25,7 @@ export async function getCategories() {
     return response;
 }
 
+
 export default async function Posts() {
     const responsePosts = await getPosts();
     const responseCategories = await getCategories();
@@ -32,39 +33,38 @@ export default async function Posts() {
     const { items: postsArray } = responsePosts;
     const { items: categoriesArray } = responseCategories;
 
+
     return (
-        <>
-            <div className={styles.postContainer}>
-                <div>
-                    <AboutComponent
-                        title={"About"}
-                        text={"Hallo this is about"}
-                    />
-                    <h1 className={styles.postsHeader}>Posts</h1>
+        <div className={styles.postContainer}>
+            <div>
+                <AboutComponent
+                    title={"About"}
+                    text={"Hallo this is about"}
+                />
+                <h1 className={styles.postsHeader}>Posts</h1>
 
-                    <CategoriesFilters categoriesArray={categoriesArray} />
+                <CategoriesFilters categoriesArray={categoriesArray} />
 
-                    <ul className={styles.postsWrapper}>
-                        {postsArray.map((post: TypePost) => {
-                            const {
-                                sys,
-                                fields: { title, category, slug },
-                            } = post || {};
+                <ul className={styles.postsWrapper}>
+                    {postsArray.map((post: TypePost) => {
+                        const {
+                            sys,
+                            fields: { title, category, slug },
+                        } = post || {};
 
-                            return (
-                                <li className={styles.post} key={sys.id}>
-                                    <Link href={`/${slug}`}>
-                                        <h3>{title}</h3>
-                                    </Link>
-                                    {category && (
-                                        <p>category: {category.fields.title}</p>
-                                    )}
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
+                        return (
+                            <li className={styles.post} key={sys.id}>
+                                <Link href={`/${slug}`}>
+                                    <h3>{title}</h3>
+                                </Link>
+                                {category && (
+                                    <p>category: {category.fields.title}</p>
+                                )}
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
-        </>
+        </div>
     );
 }
