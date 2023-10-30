@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-
 import { useState } from "react";
 import { TypePost } from "../../../types/contentful";
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
@@ -16,7 +15,6 @@ export default function Posts({
     postsArray: TypePost[];
     categoriesArray: TypeCategory[];
 }) {
-
     const [activeCategories, setActiveCategories] = useState(Array<string>);
 
     const handleClick = (category: string) => {
@@ -35,14 +33,17 @@ export default function Posts({
         }
     };
 
-
     return (
         <div className={styles.postContainer}>
             <div>
                 <AboutComponent title={"About"} text={"Hallo this is about"} />
                 <h1 className={styles.postsHeader}>Posts</h1>
 
-                <CategoriesFilters categoriesArray={categoriesArray} handleClick={handleClick} activeCategories={activeCategories} />
+                <CategoriesFilters
+                    categoriesArray={categoriesArray}
+                    handleClick={handleClick}
+                    activeCategories={activeCategories}
+                />
 
                 <ul className={styles.postsWrapper}>
                     {postsArray.map((post: TypePost) => {
@@ -51,15 +52,30 @@ export default function Posts({
                             fields: { title, category, slug },
                         } = post || {};
 
+                        const { title: postTitle } = category?.fields || {};
+
+                        const showPost =
+                            category &&
+                            postTitle &&
+                            (!activeCategories.length ||
+                                activeCategories.includes(postTitle));
+
                         return (
-                            <li className={styles.post} key={sys.id}>
-                                <Link href={`/${slug}`}>
-                                    <h3>{title}</h3>
-                                </Link>
-                                {category && (
-                                    <p>category: {category.fields.title}</p>
+                            <>
+                                {showPost && (
+                                    <li className={styles.post} key={sys.id}>
+                                        <Link href={`/${slug}`}>
+                                            <h3>{title}</h3>
+                                        </Link>
+                                        {category && (
+                                            <p>
+                                                category:{" "}
+                                                {category.fields.title}
+                                            </p>
+                                        )}
+                                    </li>
                                 )}
-                            </li>
+                            </>
                         );
                     })}
                 </ul>

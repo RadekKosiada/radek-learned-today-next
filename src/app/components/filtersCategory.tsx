@@ -7,13 +7,12 @@ import styles from "./filtersCategory.module.css";
 export default function CategoriesFilters({
     categoriesArray,
     handleClick,
-    activeCategories
+    activeCategories,
 }: {
     categoriesArray: TypeCategory[];
     handleClick: (category: string) => void;
-    activeCategories: Array<string>
+    activeCategories: Array<string>;
 }) {
-
     return (
         <>
             <h4>Filters: </h4>
