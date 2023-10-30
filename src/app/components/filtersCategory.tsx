@@ -2,33 +2,17 @@
 
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
 
-import { useState } from "react";
 import styles from "./filtersCategory.module.css";
 
 export default function CategoriesFilters({
     categoriesArray,
+    handleClick,
+    activeCategories
 }: {
     categoriesArray: TypeCategory[];
+    handleClick: (category: string) => void;
+    activeCategories: Array<string>
 }) {
-    const [activeCategories, setActiveCategories] = useState(Array<string>);
-
-    const handleClick = (category: string) => {
-        if (!activeCategories.includes(category)) {
-            setActiveCategories([...activeCategories, category]);
-
-            categoriesArray.map((item) => {
-                if (item.fields.title === category) {
-                }
-            });
-        } else {
-            const newActiveCategories = activeCategories.filter(
-                (item) => item !== category
-            );
-            setActiveCategories(newActiveCategories);
-        }
-    };
-
-    console.log(categoriesArray);
 
     return (
         <>
