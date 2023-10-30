@@ -1,46 +1,22 @@
 import Link from "next/link";
 
-import styles from "./posts.module.css";
-
-import { client } from "../lib/contentful/client";
-
 import { TypePost } from "../../../types/contentful";
-import { responseTypeCategories } from "../../../types/contentful/TypeCategory";
-import { responseTypePosts } from "../../../types/contentful/TypePost";
+import { TypeCategory } from "../../../types/contentful/TypeCategory";
 import AboutComponent from "../components/about";
 import CategoriesFilters from "../components/filtersCategory";
+import styles from "./posts.module.css";
 
-// https://nextjs.org/docs/app/building-your-application/caching#request-memoization
-export async function getPosts() {
-    const response: responseTypePosts = await client.getEntries({
-        content_type: "post",
-    });
-    return response;
-}
-
-export async function getCategories() {
-    const response: responseTypeCategories = await client.getEntries({
-        content_type: "category",
-    });
-    return response;
-}
-
-
-export default async function Posts() {
-    const responsePosts = await getPosts();
-    const responseCategories = await getCategories();
-
-    const { items: postsArray } = responsePosts;
-    const { items: categoriesArray } = responseCategories;
-
-
+export default async function Posts({
+    postsArray,
+    categoriesArray,
+}: {
+    postsArray: TypePost[];
+    categoriesArray: TypeCategory[];
+}) {
     return (
         <div className={styles.postContainer}>
             <div>
-                <AboutComponent
-                    title={"About"}
-                    text={"Hallo this is about"}
-                />
+                <AboutComponent title={"About"} text={"Hallo this is about"} />
                 <h1 className={styles.postsHeader}>Posts</h1>
 
                 <CategoriesFilters categoriesArray={categoriesArray} />
