@@ -33,6 +33,11 @@ export default function Posts({
         }
     };
 
+    const handleCancelClick = () => {
+        setActiveCategories([]);
+
+    }
+
     return (
         <div className={styles.postContainer}>
             <div>
@@ -42,6 +47,7 @@ export default function Posts({
                 <CategoriesFilters
                     categoriesArray={categoriesArray}
                     handleClick={handleClick}
+                    handleCancelClick={handleCancelClick}
                     activeCategories={activeCategories}
                 />
 

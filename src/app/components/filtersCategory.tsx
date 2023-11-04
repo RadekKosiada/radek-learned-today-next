@@ -7,15 +7,19 @@ import styles from "./filtersCategory.module.css";
 export default function CategoriesFilters({
     categoriesArray,
     handleClick,
+    handleCancelClick,
     activeCategories,
 }: {
     categoriesArray: TypeCategory[];
     handleClick: (category: string) => void;
+    handleCancelClick: () => void;
     activeCategories: Array<string>;
 }) {
     return (
         <>
             <h4>Filters: </h4>
+            <button className={styles.categoryFilter}
+                onClick={handleCancelClick}>Cancel</button>
             <ul className={styles.categoriesWrapper}>
                 {categoriesArray.map((category: TypeCategory) => {
                     const {
