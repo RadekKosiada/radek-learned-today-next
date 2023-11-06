@@ -1,14 +1,13 @@
-import Link from "next/link";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
+import { TypePost, responseTypePosts } from "../../../types/contentful/TypePost";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import Image from "next/image";
-import { TypePost, responseType } from "../../../types/contentful/TypePost";
-import { getPosts } from "../posts/page";
+import { getPosts } from "../page";
 
 export default async function Slug({ params }: { params: { slug: string } }) {
     const { slug } = params;
-    const response: responseType = await getPosts();
+    const response: responseTypePosts = await getPosts();
 
     const { items } = response;
 
