@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { TypePost } from "../../../types/contentful";
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
+import { dateOptions } from "../../../utils";
 import AboutComponent from "../components/about";
 import CategoriesFilters from "../components/filtersCategory";
 import styles from "./posts.module.css";
@@ -35,8 +36,7 @@ export default function Posts({
 
     const handleCancelClick = () => {
         setActiveCategories([]);
-
-    }
+    };
 
     return (
         <div className={styles.postContainer}>
@@ -55,7 +55,7 @@ export default function Posts({
                     {postsArray.map((post: TypePost) => {
                         const {
                             sys,
-                            fields: { title, category, slug },
+                            fields: { title, category, slug, publishDate },
                         } = post || {};
 
                         const { title: postTitle } = category?.fields || {};
@@ -66,6 +66,12 @@ export default function Posts({
                             (!activeCategories.length ||
                                 activeCategories.includes(postTitle));
 
+                        const publishDateFormatted = publishDate
+                            ? new Date(publishDate).toLocaleDateString(
+                                  "en-EN",
+                                  dateOptions
+                              )
+                            : "";
                         return (
                             <>
                                 {showPost && (
@@ -79,6 +85,9 @@ export default function Posts({
                                                 {category.fields.title}
                                             </p>
                                         )}
+                                        <p>
+                                            published: {publishDateFormatted}{" "}
+                                        </p>
                                     </li>
                                 )}
                             </>
