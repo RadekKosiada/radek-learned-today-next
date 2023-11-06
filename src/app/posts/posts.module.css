@@ -20,6 +20,20 @@ li.post {
     margin-top: 10px;
 }
 
+.categoryFilter {
+    background-color: white;
+    border: 1px solid grey;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.categoryFilter:hover {
+    background-color: grey;
+    color: white;
+    opacity: 0.8;
+}
+
 @media screen and (min-width: 480px) {
     ul.postsWrapper {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

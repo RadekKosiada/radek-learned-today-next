@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { TypePost } from "../../../types/contentful";
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
-import { dateOptions } from "../../../utils";
+import { dateOptions, sortPosts } from "../../../utils";
 import AboutComponent from "../components/about";
 import CategoriesFilters from "../components/filtersCategory";
 import styles from "./posts.module.css";
@@ -17,6 +17,7 @@ export default function Posts({
     categoriesArray: TypeCategory[];
 }) {
     const [activeCategories, setActiveCategories] = useState(Array<string>);
+    const [filterDateDescending, setFilterDateDescending] = useState(true);
 
     const handleClick = (category: string) => {
         if (!activeCategories.includes(category)) {
@@ -38,6 +39,18 @@ export default function Posts({
         setActiveCategories([]);
     };
 
+    const handleFilterDate = () => {
+        setFilterDateDescending(!filterDateDescending);
+    };
+
+    const sortedPosts = filterDateDescending
+        ? sortPosts(postsArray, "descending")
+        : sortPosts(postsArray, "ascending");
+
+    const dateFilterButtonText = filterDateDescending
+        ? "From the oldest ⇧"
+        : "From the newest ⇩";
+
     return (
         <div className={styles.postContainer}>
             <div>
@@ -51,8 +64,16 @@ export default function Posts({
                     activeCategories={activeCategories}
                 />
 
+                <h4>Filter posts according to date:</h4>
+                <button
+                    className={styles.categoryFilter}
+                    onClick={handleFilterDate}
+                >
+                    {dateFilterButtonText}
+                </button>
+
                 <ul className={styles.postsWrapper}>
-                    {postsArray.map((post: TypePost) => {
+                    {sortedPosts.map((post: TypePost) => {
                         const {
                             sys,
                             fields: { title, category, slug, publishDate },
