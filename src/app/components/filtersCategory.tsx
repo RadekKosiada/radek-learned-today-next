@@ -17,10 +17,10 @@ export default function CategoriesFilters({
 }) {
     return (
         <>
-            <h4>Filters: </h4>
-            <button className={styles.categoryFilter}
-                onClick={handleCancelClick}>Cancel</button>
+            <h4>Filter posts according to category:</h4>
             <ul className={styles.categoriesWrapper}>
+                <button disabled={!activeCategories.length} className={styles.categoryFilter}
+                    onClick={handleCancelClick}>Cancel</button>
                 {categoriesArray.map((category: TypeCategory) => {
                     const {
                         sys,
