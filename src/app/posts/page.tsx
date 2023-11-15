@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TypePost } from "../../../types/contentful";
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
 import { dateOptions, sortPosts } from "../../../utils";
@@ -19,14 +19,11 @@ export default function Posts({
     const [activeCategories, setActiveCategories] = useState(Array<string>);
     const [filterDateDescending, setFilterDateDescending] = useState(true);
 
+    const [numOfShownPosts, setNumOfShownPosts] = useState(postsArray.length);
     const handleClick = (category: string) => {
+        console.log("cLIEDK");
         if (!activeCategories.includes(category)) {
             setActiveCategories([...activeCategories, category]);
-
-            categoriesArray.map((item) => {
-                if (item.fields.title === category) {
-                }
-            });
         } else {
             const newActiveCategories = activeCategories.filter(
                 (item) => item !== category
@@ -34,6 +31,20 @@ export default function Posts({
             setActiveCategories(newActiveCategories);
         }
     };
+
+    useEffect(() => {
+        if (activeCategories.length) {
+            const filteredPosts = postsArray.filter(
+                (post) =>
+                    post.fields.category &&
+                    post.fields.category.fields.title &&
+                    activeCategories.includes(post.fields.category.fields.title)
+            );
+            setNumOfShownPosts(filteredPosts.length);
+        } else {
+            setNumOfShownPosts(postsArray.length);
+        }
+    }, [postsArray, activeCategories]);
 
     const handleCancelClick = () => {
         setActiveCategories([]);
@@ -53,9 +64,21 @@ export default function Posts({
 
     return (
         <div className={styles.postContainer}>
+            <p>Current posts: {numOfShownPosts}</p>
             <div>
                 <AboutComponent title={"About"} text={"Hallo this is about"} />
                 <h1 className={styles.postsHeader}>Posts</h1>
+                <p>
+                    <p>
+                        You currently see{" "}
+                        {numOfShownPosts === postsArray.length
+                            ? "all"
+                            : numOfShownPosts}{" "}
+                        of {postsArray.length}
+                        {" available "}
+                        posts
+                    </p>
+                </p>
 
                 <CategoriesFilters
                     categoriesArray={categoriesArray}
