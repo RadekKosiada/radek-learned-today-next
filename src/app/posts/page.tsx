@@ -76,16 +76,21 @@ export default function Posts({
                     {sortedPosts.map((post: TypePost) => {
                         const {
                             sys,
-                            fields: { title, category, slug, publishDate },
+                            fields: {
+                                title: postTitle,
+                                category,
+                                slug,
+                                publishDate,
+                            },
                         } = post || {};
 
-                        const { title: postTitle } = category?.fields || {};
+                        const { title: postCategory } = category?.fields || {};
 
                         const showPost =
                             category &&
-                            postTitle &&
+                            postCategory &&
                             (!activeCategories.length ||
-                                activeCategories.includes(postTitle));
+                                activeCategories.includes(postCategory));
 
                         const publishDateFormatted = publishDate
                             ? new Date(publishDate).toLocaleDateString(
@@ -98,14 +103,10 @@ export default function Posts({
                                 {showPost && (
                                     <li className={styles.post} key={sys.id}>
                                         <Link href={`/${slug}`}>
-                                            <h3>{title}</h3>
+                                            <h3>
+                                                {postCategory}: {postTitle}
+                                            </h3>
                                         </Link>
-                                        {category && (
-                                            <p>
-                                                category:{" "}
-                                                {category.fields.title}
-                                            </p>
-                                        )}
                                         <p>
                                             published: {publishDateFormatted}{" "}
                                         </p>
