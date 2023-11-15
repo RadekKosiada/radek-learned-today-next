@@ -69,15 +69,13 @@ export default function Posts({
                 <AboutComponent title={"About"} text={"Hallo this is about"} />
                 <h1 className={styles.postsHeader}>Posts</h1>
                 <p>
-                    <p>
-                        You currently see{" "}
-                        {numOfShownPosts === postsArray.length
-                            ? "all"
-                            : numOfShownPosts}{" "}
-                        of {postsArray.length}
-                        {" available "}
-                        posts
-                    </p>
+                    You currently see{" "}
+                    {numOfShownPosts === postsArray.length
+                        ? "all"
+                        : numOfShownPosts}{" "}
+                    of {postsArray.length}
+                    {" available "}
+                    posts
                 </p>
 
                 <CategoriesFilters
@@ -122,20 +120,16 @@ export default function Posts({
                               )
                             : "";
                         return (
-                            <>
-                                {showPost && (
-                                    <li className={styles.post} key={sys.id}>
-                                        <Link href={`/${slug}`}>
-                                            <h3>
-                                                {postCategory}: {postTitle}
-                                            </h3>
-                                        </Link>
-                                        <p>
-                                            published: {publishDateFormatted}{" "}
-                                        </p>
-                                    </li>
-                                )}
-                            </>
+                            showPost && (
+                                <li className={styles.post} key={sys.id}>
+                                    <Link href={`/${slug}`}>
+                                        <h3>
+                                            {postCategory}: {postTitle}
+                                        </h3>
+                                    </Link>
+                                    <p>published: {publishDateFormatted} </p>
+                                </li>
+                            )
                         );
                     })}
                 </ul>

@@ -7,11 +7,11 @@ export default function Header({ isHome }: { isHome?: boolean }) {
             <nav>
                 <ul className={isHome ? styles.singleColumn : ""}>
                     {!isHome && (
-                        <li>
+                        <li key="home">
                             <Link href="/">Home</Link>
                         </li>
                     )}
-                    <li>
+                    <li key="about">
                         <Link href="/about">About me</Link>
                     </li>
                 </ul>

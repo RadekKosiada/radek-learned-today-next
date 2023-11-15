@@ -1,6 +1,9 @@
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { TypePost, responseTypePosts } from "../../../types/contentful/TypePost";
+import {
+    TypePost,
+    responseTypePosts,
+} from "../../../types/contentful/TypePost";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { getPosts } from "../page";
@@ -29,8 +32,6 @@ export default async function Slug({ params }: { params: { slug: string } }) {
                     height={100}
                 />
             )}
-
-            {/* <p>created at: {item.sys.createdAt}</p> */}
             {publishDate && <p>published at: {publishDate}</p>}
             {category && <p>category: {category.fields.title}</p>}
 
