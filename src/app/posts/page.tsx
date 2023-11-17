@@ -21,7 +21,6 @@ export default function Posts({
 
     const [numOfShownPosts, setNumOfShownPosts] = useState(postsArray.length);
     const handleClick = (category: string) => {
-        console.log("cLIEDK");
         if (!activeCategories.includes(category)) {
             setActiveCategories([...activeCategories, category]);
         } else {

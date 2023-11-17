@@ -1,0 +1,23 @@
+.examplesWrapper {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 300px;
+    padding: 10px 20px;
+}
+
+.example1Text {
+    position: relative;
+}
+
+.example1Text::after {
+    position: absolute;
+    z-index: -5;
+    left: 5px;
+    top: 5px;
+    content: attr(data-text);
+    background-image: radial-gradient(#aa85ba 0%, #aa85ba 60%, transparent 60%);
+    background-size: 4px 4px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+}

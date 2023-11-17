@@ -6,8 +6,9 @@
 .headerWrapper ul {
     display: grid;
     list-style-type: none;
-    grid-template-columns: 1fr 1fr;
-    min-width: 200px;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-width: 300px;
+    text-align: center;
 }
 
 ul.singleColumn {

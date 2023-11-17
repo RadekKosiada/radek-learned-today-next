@@ -11,6 +11,9 @@ export default function Header({ isHome }: { isHome?: boolean }) {
                             <Link href="/">Home</Link>
                         </li>
                     )}
+                    <li key="playground">
+                        <Link href="/playground">Playground</Link>
+                    </li>
                     <li key="about">
                         <Link href="/about">About me</Link>
                     </li>
