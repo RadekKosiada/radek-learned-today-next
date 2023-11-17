@@ -63,7 +63,6 @@ export default function Posts({
 
     return (
         <div className={styles.postContainer}>
-            <p>Current posts: {numOfShownPosts}</p>
             <>
                 <AboutComponent title={"About"} text={"Hallo this is about"} />
                 <h1 className={styles.postsHeader}>Posts</h1>
