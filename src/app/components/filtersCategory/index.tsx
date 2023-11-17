@@ -1,6 +1,6 @@
 "use client";
 
-import { TypeCategory } from "../../../types/contentful/TypeCategory";
+import { TypeCategory } from "../../../../types/contentful/TypeCategory";
 
 import styles from "./filtersCategory.module.scss";
 

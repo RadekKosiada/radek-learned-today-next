@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Footer from "../components/footer";
-import Header from "../components/header";
 import styles from "./playground.module.scss";
+import Header from "../components/header";
 
 function ExampleWrapper({ child }: { child: ReactNode }) {
     return <div className={styles.examplesWrapper}>{child}</div>;

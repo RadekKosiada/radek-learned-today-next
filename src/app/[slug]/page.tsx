@@ -5,8 +5,8 @@ import {
     responseTypePosts,
 } from "../../../types/contentful/TypePost";
 import Footer from "../components/footer";
-import Header from "../components/header";
 import { getPosts } from "../page";
+import Header from "../components/header";
 
 export default async function Slug({ params }: { params: { slug: string } }) {
     const { slug } = params;
