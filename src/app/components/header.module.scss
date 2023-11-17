@@ -11,6 +11,6 @@
     text-align: center;
 }
 
-ul.singleColumn {
-    direction: rtl;
+ul.tripleColumn {
+    grid-template-columns: 1fr 1fr 1fr;
 }

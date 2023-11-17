@@ -11,10 +11,16 @@ export default function Header() {
     const playgroundPathname = "/playground";
     const aboutPathname = "/about";
 
+    const isPageFromHeader = [
+        homePathname,
+        playgroundPathname,
+        aboutPathname,
+    ].includes(pathname);
+
     return (
         <header className={styles.headerWrapper}>
             <nav>
-                <ul>
+                <ul className={!isPageFromHeader ? styles.tripleColumn : ""}>
                     {pathname !== homePathname && (
                         <li key="home">
                             <Link href={homePathname}>Home</Link>
