@@ -27,6 +27,7 @@ li.post {
 
 .categoryFilter {
     @include primary-button;
+    max-width: 150px;
 }
 
 /* 
