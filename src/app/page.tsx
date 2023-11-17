@@ -28,7 +28,7 @@ export default async function Home() {
     const { items: categoriesArray } = responseCategories;
     return (
         <>
-            <Header isHome={true} />
+            <Header />
             <Posts postsArray={postsArray} categoriesArray={categoriesArray} />
             <Footer />
         </>
