@@ -1,6 +1,10 @@
+@import "../../../variables.module.scss";
+
 .headerWrapper {
     display: grid;
     justify-content: end;
+    padding-left: $main-padding;
+    padding-right: $main-padding;
 }
 
 .headerWrapper ul {

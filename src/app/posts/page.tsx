@@ -64,7 +64,7 @@ export default function Posts({
     return (
         <div className={styles.postContainer}>
             <p>Current posts: {numOfShownPosts}</p>
-            <div>
+            <>
                 <AboutComponent title={"About"} text={"Hallo this is about"} />
                 <h1 className={styles.postsHeader}>Posts</h1>
                 <p>
@@ -132,7 +132,7 @@ export default function Posts({
                         );
                     })}
                 </ul>
-            </div>
+            </>
         </div>
     );
 }
