@@ -21,7 +21,9 @@ export default function CategoriesFilters({
             <ul className={styles.categoriesWrapper}>
                 <button
                     disabled={!activeCategories.length}
-                    className={styles.categoryFilter}
+                    className={
+                        activeCategories.length ? styles.categoryFilter : ""
+                    }
                     onClick={handleCancelClick}
                 >
                     Cancel

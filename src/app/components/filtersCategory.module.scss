@@ -1,25 +1,25 @@
+@import "../../variables.module.scss";
+
 ul.categoriesWrapper {
     list-style-type: none;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 5px;
+    gap: $small-grid-gap;
     padding: 0;
 }
 
-li.categoryFilter {
-    border: 1px solid grey;
-    padding: 5px;
+.categoryFilter {
+    border: $border;
+    padding: $small-padding;
     text-align: center;
     cursor: pointer;
+    &:hover {
+        background-color: $secondary-color;
+        color: $white-color;
+    }
 }
 
 .filterIsActive {
-    background-color: grey;
-    color: white;
-}
-
-li.categoryFilter:hover {
-    background-color: grey;
-    color: white;
-    opacity: 0.8;
+    background-color: $primary-color;
+    color: $white-color;
 }
