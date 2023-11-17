@@ -1,0 +1,16 @@
+$primary-color: #0277bd;
+$secondary-color: #90caf9;
+$grey-color: grey;
+$red-color: #d50000;
+$black-color: #000;
+$white-color: #ffffff;
+$white-w-opacity: #ffffffb3;
+
+:export {
+    primaryColor: $primary-color;
+    secondaryColor: $secondary-color;
+    redColor: $red-color;
+    blackColor: $black-color;
+    whiteColor: $white-color;
+    whiteWithOpacity: $white-w-opacity;
+}

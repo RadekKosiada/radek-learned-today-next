@@ -2,7 +2,7 @@
 
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
 
-import styles from "./filtersCategory.module.css";
+import styles from "./filtersCategory.module.scss";
 
 export default function CategoriesFilters({
     categoriesArray,
