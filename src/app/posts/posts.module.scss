@@ -22,7 +22,21 @@ ul.postsWrapper {
 li.post {
     background-color: $bg-post-color;
     padding: $post-padding;
-    @include box-shadow;
+    box-shadow: $box-shadow;
+    transition: box-shadow 0.3s ease;
+    a {
+        text-decoration: none;
+    }
+    h3 {
+        color: $black-color;
+        &:hover {
+            color: $primary-color;
+            text-decoration: underline;
+        }
+    }
+    &:hover {
+        box-shadow: $box-shadow-hover;
+    }
 }
 
 .categoryFilter {
