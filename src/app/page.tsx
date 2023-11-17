@@ -4,6 +4,7 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import { client } from "./lib/contentful/client";
 import Posts from "./posts/page";
+import main from "./main.module.scss";
 
 // https://nextjs.org/docs/app/building-your-application/caching#request-memoization
 export async function getPosts() {
@@ -27,10 +28,10 @@ export default async function Home() {
     const { items: postsArray } = responsePosts;
     const { items: categoriesArray } = responseCategories;
     return (
-        <>
+        <div className={main.container}>
             <Header />
             <Posts postsArray={postsArray} categoriesArray={categoriesArray} />
             <Footer />
-        </>
+        </div>
     );
 }

@@ -9,14 +9,7 @@ ul.categoriesWrapper {
 }
 
 .categoryFilter {
-    border: $border;
-    padding: $small-padding;
-    text-align: center;
-    cursor: pointer;
-    &:hover {
-        background-color: $secondary-color;
-        color: $white-color;
-    }
+    @include primary-button;
 }
 
 .filterIsActive {

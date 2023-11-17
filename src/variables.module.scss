@@ -1,14 +1,35 @@
 $primary-color: #661d34;
 $secondary-color: #661d34cc;
+$bg-post-color: #ffffa5;
+$bg-primary-color: #dae3ea;
 $grey-color: grey;
 $red-color: #d50000;
 $black-color: #000;
 $white-color: #ffffff;
 $white-w-opacity: #ffffffb3;
+$shadow-color: #00000033;
 
 $border: 1px solid $primary-color;
 $small-grid-gap: 5px;
+$big-grid-gap: 20px;
 $small-padding: 5px;
+$post-padding: 10px 20px;
+
+@mixin primary-button {
+    background-color: $white-color;
+    border: $border;
+    padding: $small-padding;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+        background-color: $secondary-color;
+        color: $white-color;
+    }
+}
+
+@mixin box-shadow {
+    box-shadow: 0 10px 8px 0 $shadow-color;
+}
 
 :export {
     primaryColor: $primary-color;
