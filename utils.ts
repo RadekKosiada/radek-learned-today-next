@@ -7,6 +7,12 @@ export const dateOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
 };
 
+export const formatDate = (
+    date: `${number}-${number}-${number}T${number}:${number}:${number}Z`
+) => {
+    return new Date(date).toLocaleDateString("en-EN", dateOptions);
+};
+
 export function valueOfDate(num: EntryFields.Date) {
     return new Date(num).valueOf();
 }

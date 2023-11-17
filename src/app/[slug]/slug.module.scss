@@ -1,0 +1,17 @@
+@import "../../variables.module.scss";
+
+.postWrapper {
+    padding-left: $main-padding;
+    padding-right: $main-padding;
+
+    pre {
+        padding: $post-padding;
+        background-color: $white-color;
+        border-radius: $border-radius;
+        text-wrap: balance;
+    }
+
+    code {
+        background-color: $white-color;
+    }
+}

@@ -7,6 +7,8 @@ import {
 import Footer from "../components/footer";
 import { getPosts } from "../page";
 import Header from "../components/header";
+import { formatDate } from "../../../utils";
+import styles from "./slug.module.scss";
 
 export default async function Slug({ params }: { params: { slug: string } }) {
     const { slug } = params;
@@ -23,21 +25,24 @@ export default async function Slug({ params }: { params: { slug: string } }) {
     return (
         <>
             <Header />
-            {title && <h3>{title}</h3>}
-            {category?.fields.icon?.fields.file && (
-                <Image
-                    src={`https:${category.fields.icon.fields.file.url}`}
-                    alt={"abc"}
-                    width={100}
-                    height={100}
-                />
-            )}
-            {publishDate && <p>published at: {publishDate}</p>}
-            {category && <p>category: {category.fields.title}</p>}
+            <div className={styles.postWrapper}>
+                {title && category && (
+                    <h3>
+                        {category.fields.title}: {title}
+                    </h3>
+                )}
+                {/* {category?.fields.icon?.fields.file && (
+                    <Image
+                        src={`https:${category.fields.icon.fields.file.url}`}
+                        alt={"abc"}
+                        width={100}
+                        height={100}
+                    />
+                )} */}
 
-            {body && <ReactMarkdown>{body}</ReactMarkdown>}
-            <p>slug: {slug}</p>
-
+                {body && <ReactMarkdown>{body}</ReactMarkdown>}
+                {publishDate && <p>published: {formatDate(publishDate)}</p>}
+            </div>
             <Footer />
         </>
     );

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TypePost } from "../../../types/contentful";
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
-import { dateOptions, sortPosts } from "../../../utils";
+import { dateOptions, formatDate, sortPosts } from "../../../utils";
 import AboutComponent from "../components/about";
 import CategoriesFilters from "../components/filtersCategory";
 import styles from "./posts.module.scss";
@@ -112,10 +112,7 @@ export default function Posts({
                                 activeCategories.includes(postCategory));
 
                         const publishDateFormatted = publishDate
-                            ? new Date(publishDate).toLocaleDateString(
-                                  "en-EN",
-                                  dateOptions
-                              )
+                            ? formatDate(publishDate)
                             : "";
                         return (
                             showPost && (
