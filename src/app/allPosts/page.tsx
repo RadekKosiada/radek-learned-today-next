@@ -18,8 +18,11 @@ export default function AllPosts({
 }) {
     const [activeCategories, setActiveCategories] = useState(Array<string>);
     const [filterDateDescending, setFilterDateDescending] = useState(true);
-
     const [numOfShownPosts, setNumOfShownPosts] = useState(postsArray.length);
+    const [sortedPosts, setSortedPosts] = useState(Array<TypePost>);
+    const [dateFilterButtonText, setDateFilterButtonText] =
+        useState("From the oldest ⇧");
+
     const handleClick = (category: string) => {
         if (!activeCategories.includes(category)) {
             setActiveCategories([...activeCategories, category]);
@@ -53,13 +56,18 @@ export default function AllPosts({
         setFilterDateDescending(!filterDateDescending);
     };
 
-    const sortedPosts = filterDateDescending
-        ? sortPosts(postsArray, "descending")
-        : sortPosts(postsArray, "ascending");
+    useEffect(() => {
+        const sortedAccordingToDate = filterDateDescending
+            ? sortPosts(postsArray, "descending")
+            : sortPosts(postsArray, "ascending");
 
-    const dateFilterButtonText = filterDateDescending
-        ? "From the oldest ⇧"
-        : "From the newest ⇩";
+        const buttonText = filterDateDescending
+            ? "From the oldest ⇧"
+            : "From the newest ⇩";
+
+        setSortedPosts(sortedAccordingToDate);
+        setDateFilterButtonText(buttonText);
+    }, [filterDateDescending]);
 
     return (
         <div className={styles.container}>
