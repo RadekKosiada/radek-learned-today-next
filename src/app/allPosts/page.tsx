@@ -5,9 +5,9 @@ import { TypePost } from "../../../types/contentful";
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
 import { sortPosts } from "../../../utils";
 import AboutComponent from "../components/aboutComponent";
-import CategoriesFilters from "../components/filtersCategory";
 import styles from "./posts.module.scss";
 import PostsContainer from "../components/postsContainer";
+import Filters from "../components/filters";
 
 export default function AllPosts({
     postsArray,
@@ -73,31 +73,20 @@ export default function AllPosts({
         <div className={styles.container}>
             <>
                 <AboutComponent title={"About"} text={"Hallo this is about"} />
-                <h1 className={styles.postsHeader}>Posts</h1>
-                <p>
-                    You currently see{" "}
+                <h1 className={styles.postsHeader}>
                     {numOfShownPosts === postsArray.length
-                        ? "all"
-                        : numOfShownPosts}{" "}
-                    of {postsArray.length}
-                    {" available "}
-                    posts
-                </p>
+                        ? `All Posts ${postsArray.length}`
+                        : `Posts (${numOfShownPosts})`}
+                </h1>
 
-                <CategoriesFilters
+                <Filters
                     categoriesArray={categoriesArray}
                     handleClick={handleClick}
                     handleCancelClick={handleCancelClick}
+                    handleFilterDate={handleFilterDate}
                     activeCategories={activeCategories}
+                    dateFilterButtonText={dateFilterButtonText}
                 />
-
-                <h4>Filter posts according to date:</h4>
-                <button
-                    className={styles.categoryFilter}
-                    onClick={handleFilterDate}
-                >
-                    {dateFilterButtonText}
-                </button>
 
                 <PostsContainer
                     sortedPosts={sortedPosts}

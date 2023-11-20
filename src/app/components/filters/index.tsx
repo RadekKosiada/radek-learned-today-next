@@ -2,18 +2,22 @@
 
 import { TypeCategory } from "../../../../types/contentful/TypeCategory";
 
-import styles from "./filtersCategory.module.scss";
+import styles from "./filters.module.scss";
 
-export default function CategoriesFilters({
+export default function Filters({
     categoriesArray,
     handleClick,
     handleCancelClick,
+    handleFilterDate,
     activeCategories,
+    dateFilterButtonText,
 }: {
     categoriesArray: TypeCategory[];
     handleClick: (category: string) => void;
     handleCancelClick: () => void;
+    handleFilterDate: () => void;
     activeCategories: Array<string>;
+    dateFilterButtonText: string;
 }) {
     return (
         <>
@@ -52,6 +56,13 @@ export default function CategoriesFilters({
                     );
                 })}
             </ul>
+            <h4>Filter posts according to date:</h4>
+            <button
+                className={styles.categoryFilter}
+                onClick={handleFilterDate}
+            >
+                {dateFilterButtonText}
+            </button>
         </>
     );
 }

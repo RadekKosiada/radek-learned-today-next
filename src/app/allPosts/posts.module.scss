@@ -5,8 +5,3 @@
     padding-left: $main-padding;
     padding-right: $main-padding;
 }
-
-.categoryFilter {
-    @include primary-button;
-    max-width: 150px;
-}
