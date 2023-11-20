@@ -1,15 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TypePost } from "../../../types/contentful";
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
-import { formatDate, sortPosts } from "../../../utils";
+import { sortPosts } from "../../../utils";
 import AboutComponent from "../components/aboutComponent";
 import CategoriesFilters from "../components/filtersCategory";
 import styles from "./posts.module.scss";
+import PostsContainer from "../components/postsContainer";
 
-export default function Posts({
+export default function AllPosts({
     postsArray,
     categoriesArray,
 }: {
@@ -62,7 +62,7 @@ export default function Posts({
         : "From the newest ⇩";
 
     return (
-        <div className={styles.postContainer}>
+        <div className={styles.container}>
             <>
                 <AboutComponent title={"About"} text={"Hallo this is about"} />
                 <h1 className={styles.postsHeader}>Posts</h1>
@@ -91,43 +91,10 @@ export default function Posts({
                     {dateFilterButtonText}
                 </button>
 
-                <ul className={styles.postsWrapper}>
-                    {sortedPosts.map((post: TypePost) => {
-                        const {
-                            sys,
-                            fields: {
-                                title: postTitle,
-                                category,
-                                slug,
-                                publishDate,
-                            },
-                        } = post || {};
-
-                        const { title: postCategory } = category?.fields || {};
-
-                        const showPost =
-                            category &&
-                            postCategory &&
-                            (!activeCategories.length ||
-                                activeCategories.includes(postCategory));
-
-                        const publishDateFormatted = publishDate
-                            ? formatDate(publishDate)
-                            : "";
-                        return (
-                            showPost && (
-                                <li className={styles.post} key={sys.id}>
-                                    <Link href={`/${slug}`}>
-                                        <h3>
-                                            {postCategory}: {postTitle}
-                                        </h3>
-                                    </Link>
-                                    <p>published: {publishDateFormatted} </p>
-                                </li>
-                            )
-                        );
-                    })}
-                </ul>
+                <PostsContainer
+                    sortedPosts={sortedPosts}
+                    activeCategories={activeCategories}
+                />
             </>
         </div>
     );

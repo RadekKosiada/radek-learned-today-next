@@ -3,7 +3,7 @@ import { responseTypePosts } from "../../types/contentful/TypePost";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import { client } from "./lib/contentful/client";
-import Posts from "./posts/page";
+import AllPosts from "./allPosts/page";
 import main from "./main.module.scss";
 
 // https://nextjs.org/docs/app/building-your-application/caching#request-memoization
@@ -30,7 +30,10 @@ export default async function Home() {
     return (
         <div className={main.container}>
             <Header />
-            <Posts postsArray={postsArray} categoriesArray={categoriesArray} />
+            <AllPosts
+                postsArray={postsArray}
+                categoriesArray={categoriesArray}
+            />
             <Footer />
         </div>
     );

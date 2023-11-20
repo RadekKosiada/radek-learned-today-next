@@ -1,10 +1,4 @@
-@import "../../variables.module.scss";
-
-.postContainer {
-    display: grid;
-    padding-left: $main-padding;
-    padding-right: $main-padding;
-}
+@import "../../../variables.module.scss";
 
 .postsHeader {
     justify-self: start;
@@ -44,16 +38,3 @@ li.post {
         margin-top: auto;
     }
 }
-
-.categoryFilter {
-    @include primary-button;
-    max-width: 150px;
-}
-
-/* 
-320px — 480px: Mobile devices 481px — 768px: iPads,
-Tablets 769px — 1024px: Small screens,
-laptops 1025px — 1200px: Desktops,
-large screens 1201px and more — Extra large screens,
-TV
-*/
