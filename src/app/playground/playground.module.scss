@@ -5,16 +5,16 @@
     border-radius: 5px;
     width: 300px;
     padding: 10px 20px;
-    // background-color: $white-color;
 }
 
 .example1Text {
     position: relative;
+    z-index: 0;
 }
 
 .example1Text::after {
     position: absolute;
-    z-index: -5;
+    z-index: -1;
     left: 5px;
     top: 5px;
     content: attr(data-text);
