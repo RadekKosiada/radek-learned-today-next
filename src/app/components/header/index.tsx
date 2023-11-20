@@ -22,8 +22,8 @@ export default function Header() {
             <nav>
                 <ul className={!isPageFromHeader ? styles.tripleColumn : ""}>
                     {pathname !== homePathname && (
-                        <li key="home">
-                            <Link href={homePathname}>Home</Link>
+                        <li key="posts">
+                            <Link href={homePathname}>Back to Posts</Link>
                         </li>
                     )}
                     {pathname !== playgroundPathname && (
