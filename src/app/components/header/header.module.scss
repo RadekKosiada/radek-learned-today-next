@@ -2,9 +2,12 @@
 
 .headerWrapper {
     display: grid;
+    position: sticky;
+    top: 0;
     justify-content: end;
     padding-left: $main-padding;
     padding-right: $main-padding;
+    background-color: $primary-color;
 }
 
 .headerWrapper ul {
@@ -16,9 +19,8 @@
 
     a {
         text-decoration: none;
-        color: $black-color;
+        color: $white-color;
         &:hover {
-            color: $primary-color;
             text-decoration: underline;
         }
     }

@@ -1,6 +1,7 @@
 $primary-color: #661d34;
 $secondary-color: #661d34cc;
-$bg-post-color: #ffffa5;
+$bg-post-color: #d57698;
+// $bg-post-color: #ffffa5;
 // $bg-post-color: white;
 $bg-primary-color: #dae3ea;
 // $bg-primary-color: #151a1e;
@@ -11,25 +12,32 @@ $white-color: #ffffff;
 $white-w-opacity: #ffffffb3;
 $shadow-color: #00000033;
 $border-radius: 10px;
+$transition-hover: background-color 0.3s ease;
 
-$border: 1px solid $primary-color;
+$border: 3px solid $primary-color;
 $small-grid-gap: 5px;
 $big-grid-gap: 20px;
 $main-padding: 20%;
 $small-padding: 5px;
 $post-padding: 10px 20px;
+$box-shadow-button: 0 5px 8px 0 $shadow-color;
+$box-shadow-button-hover: 0 15px 8px 0 $shadow-color;
 $box-shadow: 0 10px 8px 0 $shadow-color;
 $box-shadow-hover: 0 30px 8px 0 $shadow-color;
 
 @mixin primary-button {
     background-color: $white-color;
     border: $border;
+    border-radius: 5px;
     padding: $small-padding;
     text-align: center;
     cursor: pointer;
+    box-shadow: $box-shadow;
+    transition: $transition-hover;
     &:hover {
         background-color: $secondary-color;
         color: $white-color;
+        box-shadow: $box-shadow-button-hover;
     }
 }
 

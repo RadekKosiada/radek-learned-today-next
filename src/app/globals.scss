@@ -3,4 +3,8 @@ html,
 body {
     margin: 0;
     background-color: $bg-primary-color;
+
+    h1 {
+        color: $primary-color;
+    }
 }
