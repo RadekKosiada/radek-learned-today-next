@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TypePost } from "../../../types/contentful";
 import { TypeCategory } from "../../../types/contentful/TypeCategory";
-import { dateOptions, formatDate, sortPosts } from "../../../utils";
-import AboutComponent from "../components/about";
+import { formatDate, sortPosts } from "../../../utils";
+import AboutComponent from "../components/aboutComponent";
 import CategoriesFilters from "../components/filtersCategory";
 import styles from "./posts.module.scss";
 
