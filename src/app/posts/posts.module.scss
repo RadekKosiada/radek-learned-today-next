@@ -20,6 +20,8 @@ ul.postsWrapper {
 }
 
 li.post {
+    display: grid;
+    grid-template-rows: auto 1fr;
     background-color: $bg-post-color;
     padding: $post-padding;
     box-shadow: $box-shadow;
@@ -29,6 +31,7 @@ li.post {
     }
     h3 {
         color: $black-color;
+
         &:hover {
             color: $primary-color;
             text-decoration: underline;
@@ -36,6 +39,9 @@ li.post {
     }
     &:hover {
         box-shadow: $box-shadow-hover;
+    }
+    p {
+        margin-top: auto;
     }
 }
 
