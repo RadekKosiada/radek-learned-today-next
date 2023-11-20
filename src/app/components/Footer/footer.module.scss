@@ -1,0 +1,12 @@
+@import "../../../variables.module.scss";
+
+.footerWrapper {
+    display: grid;
+    position: sticky;
+    bottom: 0;
+    padding-left: $main-padding;
+    padding-right: $main-padding;
+    background-color: $primary-color;
+    color: $white-color;
+    text-align: end;
+}
