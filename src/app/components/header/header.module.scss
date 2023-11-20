@@ -13,7 +13,7 @@
 .headerWrapper ul {
     display: grid;
     list-style-type: none;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     min-width: 300px;
     text-align: right;
 
@@ -27,5 +27,5 @@
 }
 
 ul.tripleColumn {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto;
 }
