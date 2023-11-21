@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TypeCategory } from "../../../../types/contentful/TypeCategory";
 
 import styles from "./filters.module.scss";
@@ -21,17 +21,43 @@ export default function Filters({
     dateFilterButtonText: string;
 }) {
     const [hideFilter, setHideFilter] = useState(true);
-    const [showFilterButtonText, setShowFilterButtonText] = useState("Show");
+
+    const [toggleClass, setToggleClass] = useState(styles.toggle);
+    const [toggleContainerClass, setToggleContainerClass] = useState(
+        styles.toggleContainer
+    );
 
     const handleShowCategoryFilters = () => {
         setHideFilter(!hideFilter);
-        setShowFilterButtonText(hideFilter ? "Hide" : "Show");
     };
+
+    useEffect(() => {
+        setToggleClass(
+            hideFilter
+                ? styles.toggle
+                : [styles.toggle, styles.toggleActive].join(" ")
+        );
+
+        setToggleContainerClass(
+            hideFilter
+                ? styles.toggleContainer
+                : [styles.toggleContainer, styles.toggleContainerActive].join(
+                      " "
+                  )
+        );
+    }, [hideFilter]);
+
     return (
         <div className={styles.container}>
-            <button onClick={handleShowCategoryFilters}>
-                {showFilterButtonText} filters
-            </button>
+            <div className={styles.toggleFilterContainer}>
+                <h4>Filters:</h4>
+                <div
+                    className={toggleContainerClass}
+                    onClick={handleShowCategoryFilters}
+                >
+                    <div className={toggleClass}></div>
+                </div>
+            </div>
             {!hideFilter && (
                 <>
                     <h4>Filter posts according to category</h4>

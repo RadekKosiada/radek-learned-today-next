@@ -1,5 +1,44 @@
 @import "../../../variables.module.scss";
 
+.toggleFilterContainer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $big-grid-gap;
+    align-items: center;
+}
+.toggleContainer {
+    width: 50px;
+    height: 20px;
+    border: $border;
+    border-radius: 20px;
+    display: grid;
+    background-color: $bg-primary-color;
+    box-shadow: $box-shadow-toggle;
+    cursor: pointer;
+    &:hover {
+        box-shadow: $box-shadow-toggle-hover;
+    }
+}
+
+.toggle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: auto 0 auto 2px;
+    border: $border;
+}
+
+.toggleContainerActive {
+    background-color: $primary-color;
+    box-shadow: 0 2px 2px 0 $shadow-color;
+}
+
+.toggleActive {
+    background-color: $primary-color;
+    border-color: $bg-primary-color;
+    margin: auto 2px auto auto;
+}
+
 ul.categoriesWrapper {
     list-style-type: none;
     display: grid;
