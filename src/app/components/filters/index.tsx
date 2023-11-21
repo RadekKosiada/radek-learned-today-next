@@ -26,6 +26,9 @@ export default function Filters({
     const [toggleContainerClass, setToggleContainerClass] = useState(
         styles.toggleContainer
     );
+    const [filterWrapperClass, setFilterWrapperClass] = useState(
+        styles.filterWrapperClass
+    );
 
     const handleShowCategoryFilters = () => {
         setHideFilter(!hideFilter);
@@ -45,6 +48,12 @@ export default function Filters({
                       " "
                   )
         );
+
+        setFilterWrapperClass(
+            hideFilter
+                ? styles.filterWrapper
+                : [styles.filterWrapper, styles.filterWrapperVisible].join(" ")
+        );
     }, [hideFilter]);
 
     return (
@@ -58,55 +67,52 @@ export default function Filters({
                     <div className={toggleClass}></div>
                 </div>
             </div>
-            {!hideFilter && (
-                <>
-                    <h4>Filter posts according to category</h4>
 
-                    <ul className={styles.categoriesWrapper}>
-                        <button
-                            disabled={!activeCategories.length}
-                            className={
-                                activeCategories.length
-                                    ? styles.categoryFilter
-                                    : ""
-                            }
-                            onClick={handleCancelClick}
-                        >
-                            Cancel
-                        </button>
-                        {categoriesArray.map((category: TypeCategory) => {
-                            const {
-                                sys,
-                                fields: { title },
-                            } = category || {};
+            <div className={filterWrapperClass}>
+                <h4>Filter posts according to category</h4>
 
-                            const isFilterActive =
-                                title && activeCategories.includes(title);
-                            const categoryClassName = [
-                                styles.categoryFilter,
-                                isFilterActive ? styles.filterIsActive : "",
-                            ].join(" ");
-
-                            return (
-                                <li
-                                    onClick={() => title && handleClick(title)}
-                                    className={categoryClassName}
-                                    key={sys.id}
-                                >
-                                    {title}
-                                </li>
-                            );
-                        })}
-                    </ul>
-                    <h4>Filter posts according to date:</h4>
+                <ul className={styles.categoriesWrapper}>
                     <button
-                        className={styles.categoryFilter}
-                        onClick={handleFilterDate}
+                        disabled={!activeCategories.length}
+                        className={
+                            activeCategories.length ? styles.categoryFilter : ""
+                        }
+                        onClick={handleCancelClick}
                     >
-                        {dateFilterButtonText}
+                        Cancel
                     </button>
-                </>
-            )}
+                    {categoriesArray.map((category: TypeCategory) => {
+                        const {
+                            sys,
+                            fields: { title },
+                        } = category || {};
+
+                        const isFilterActive =
+                            title && activeCategories.includes(title);
+                        const categoryClassName = [
+                            styles.categoryFilter,
+                            isFilterActive ? styles.filterIsActive : "",
+                        ].join(" ");
+
+                        return (
+                            <li
+                                onClick={() => title && handleClick(title)}
+                                className={categoryClassName}
+                                key={sys.id}
+                            >
+                                {title}
+                            </li>
+                        );
+                    })}
+                </ul>
+                <h4>Filter posts according to date:</h4>
+                <button
+                    className={styles.categoryFilter}
+                    onClick={handleFilterDate}
+                >
+                    {dateFilterButtonText}
+                </button>
+            </div>
         </div>
     );
 }

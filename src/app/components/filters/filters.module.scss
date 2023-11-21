@@ -33,13 +33,26 @@
 
 .toggleContainerActive {
     background-color: $primary-color;
-    box-shadow: 0 2px 2px 0 $shadow-color;
+    box-shadow: $box-shadow-toggle;
 }
 
 .toggle.toggleActive {
     background-color: $primary-color;
     border-color: $bg-primary-color;
     margin-left: 30px;
+}
+
+.filterWrapper {
+    opacity: 0;
+    height: 0;
+    z-index: -1;
+    transition: all 0.5s ease;
+}
+
+.filterWrapper.filterWrapperVisible {
+    opacity: 1;
+    height: 220px;
+    z-index: 1;
 }
 
 ul.categoriesWrapper {
@@ -58,4 +71,34 @@ ul.categoriesWrapper {
 .filterIsActive {
     background-color: $primary-color;
     color: $white-color;
+}
+
+@media screen and (max-width: 868px) {
+    .filterWrapper.filterWrapperVisible {
+        height: 260px;
+    }
+}
+
+@media screen and (max-width: 692px) {
+    .filterWrapper.filterWrapperVisible {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    .filterWrapper.filterWrapperVisible {
+        height: 340px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .filterWrapper.filterWrapperVisible {
+        height: 390px;
+    }
+}
+
+@media screen and (max-width: 341px) {
+    .filterWrapper.filterWrapperVisible {
+        height: 560px;
+    }
 }
