@@ -3,12 +3,15 @@
 .postsHeader {
     justify-self: start;
     padding: 0;
+    border-bottom: $border;
 }
 
 ul.postsWrapper {
     display: grid;
     grid-gap: $big-grid-gap;
-    padding: 0;
+    padding-left: $main-padding;
+    padding-right: $main-padding;
+
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     list-style-type: none;
 }
@@ -16,7 +19,8 @@ ul.postsWrapper {
 li.post {
     display: grid;
     grid-template-rows: auto 1fr;
-    background-color: $bg-post-color;
+    border: $border;
+    border-radius: $border-radius;
     padding: $post-padding;
     box-shadow: $box-shadow;
     transition: box-shadow 0.3s ease;

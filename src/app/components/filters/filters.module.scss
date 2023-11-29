@@ -5,6 +5,8 @@
     grid-template-columns: auto 1fr;
     gap: $big-grid-gap;
     align-items: center;
+    padding-left: $main-padding;
+    padding-right: $main-padding;
 }
 .toggleContainer {
     width: 50px;
@@ -47,6 +49,8 @@
     height: 0;
     z-index: -1;
     transition: all 0.5s ease;
+    padding-left: $main-padding;
+    padding-right: $main-padding;
 }
 
 .filterWrapper.filterWrapperVisible {
