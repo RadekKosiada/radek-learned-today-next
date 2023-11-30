@@ -4,7 +4,15 @@
     display: grid;
 }
 
-.postsHeader {
+.postsHeadingWrapper {
+    display: grid;
     padding-left: $main-padding;
     padding-right: $main-padding;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+
+    .numOfShownPosts {
+        font-size: $font-size-nav;
+        color: $primary-color;
+    }
 }

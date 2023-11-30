@@ -22,6 +22,7 @@ export default function AllPosts({
     const [sortedPosts, setSortedPosts] = useState(Array<TypePost>);
     const [dateFilterButtonText, setDateFilterButtonText] =
         useState("From the oldest ⇧");
+    const [headingText, setHeadingText] = useState("All Posts");
 
     const handleClick = (category: string) => {
         if (!activeCategories.includes(category)) {
@@ -69,15 +70,29 @@ export default function AllPosts({
         setDateFilterButtonText(buttonText);
     }, [filterDateDescending]);
 
+    useEffect(() => {
+        if (numOfShownPosts === postsArray.length) {
+            setHeadingText("All Posts");
+        } else {
+            setHeadingText("Posts");
+        }
+    }, [numOfShownPosts, postsArray.length]);
+
     return (
         <div className={styles.container}>
             <>
                 <AboutComponent title={"About"} text={"Hallo this is about"} />
-                <h1 className={styles.postsHeader}>
-                    {numOfShownPosts === postsArray.length
-                        ? `All Posts ${postsArray.length}`
-                        : `Posts (${numOfShownPosts})`}
-                </h1>
+
+                <div className={styles.postsHeadingWrapper}>
+                    <h1 className={styles.postsHeading}>{headingText} </h1>
+                    <h5 className={styles.numOfShownPosts}>
+                        {" "}
+                        {numOfShownPosts}
+                        {numOfShownPosts === postsArray.length
+                            ? ""
+                            : `/${postsArray.length}`}
+                    </h5>
+                </div>
 
                 <Filters
                     categoriesArray={categoriesArray}
