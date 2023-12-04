@@ -12,9 +12,11 @@ import Filters from "../components/filters";
 export default function AllPosts({
     postsArray,
     categoriesArray,
+    aboutText,
 }: {
     postsArray: TypePost[];
     categoriesArray: TypeCategory[];
+    aboutText: string;
 }) {
     const [activeCategories, setActiveCategories] = useState(Array<string>);
     const [filterDateDescending, setFilterDateDescending] = useState(true);
@@ -81,7 +83,7 @@ export default function AllPosts({
     return (
         <div className={styles.container}>
             <>
-                <AboutComponent title={"About"} text={"Hallo this is about"} />
+                <AboutComponent title={"About"} text={aboutText} />
 
                 <div className={styles.postsHeadingWrapper}>
                     <h1 className={styles.postsHeading}>{headingText} </h1>

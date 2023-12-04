@@ -21,18 +21,30 @@ export async function getCategories() {
     return response;
 }
 
+export async function getAbout() {
+    const response: any = await client.getEntries({
+        content_type: "about",
+    });
+
+    return response;
+}
+
 export default async function Home() {
     const responsePosts = await getPosts();
     const responseCategories = await getCategories();
+    const responseAbout = await getAbout();
 
     const { items: postsArray } = responsePosts;
     const { items: categoriesArray } = responseCategories;
+    const { items: aboutText } = responseAbout;
+
     return (
         <div className={main.container}>
             <Header />
             <AllPosts
                 postsArray={postsArray}
                 categoriesArray={categoriesArray}
+                aboutText={aboutText[0].fields.body}
             />
             <Footer />
         </div>
