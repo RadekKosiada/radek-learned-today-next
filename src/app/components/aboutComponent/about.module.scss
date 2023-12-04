@@ -5,3 +5,9 @@
     padding-right: $main-padding;
     border-bottom: $border;
 }
+
+.aboutHeader {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+}
