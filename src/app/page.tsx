@@ -25,7 +25,13 @@ export async function getAbout() {
     const response: any = await client.getEntries({
         content_type: "about",
     });
+    return response;
+}
 
+export async function getAboutMe() {
+    const response: any = await client.getEntries({
+        content_type: "aboutMe",
+    });
     return response;
 }
 
