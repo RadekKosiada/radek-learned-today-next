@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import Footer from "../components/footer";
 import styles from "./playground.module.scss";
 import Header from "../components/header";
 
@@ -30,8 +29,6 @@ export default function Playground() {
                     />
                 </div>
             </div>
-
-            <Footer />
         </>
     );
 }

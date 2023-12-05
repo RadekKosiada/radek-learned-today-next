@@ -1,6 +1,5 @@
 import { responseTypeCategories } from "../../types/contentful/TypeCategory";
 import { responseTypePosts } from "../../types/contentful/TypePost";
-import Footer from "./components/footer";
 import Header from "./components/header";
 import { client } from "./lib/contentful/client";
 import AllPosts from "./allPosts/page";
@@ -52,7 +51,6 @@ export default async function Home() {
                 categoriesArray={categoriesArray}
                 aboutText={aboutText[0].fields.body}
             />
-            <Footer />
         </div>
     );
 }

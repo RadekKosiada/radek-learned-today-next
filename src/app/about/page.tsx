@@ -1,4 +1,3 @@
-import Footer from "../components/footer";
 import AboutComponent from "../components/aboutComponent";
 import Header from "../components/header";
 
@@ -20,7 +19,6 @@ export default async function AboutPage() {
             <div className={styles.wrapper}>
                 <AboutComponent title="About me" text={aboutText} />
             </div>
-            <Footer />
         </>
     );
 }

@@ -1,10 +1,8 @@
-import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import {
     TypePost,
     responseTypePosts,
 } from "../../../types/contentful/TypePost";
-import Footer from "../components/footer";
 import { getPosts } from "../page";
 import Header from "../components/header";
 import { formatDate } from "../../../utils";
@@ -43,7 +41,6 @@ export default async function Slug({ params }: { params: { slug: string } }) {
                 {body && <ReactMarkdown>{body}</ReactMarkdown>}
                 {publishDate && <p>published: {formatDate(publishDate)}</p>}
             </div>
-            <Footer />
         </>
     );
 }
