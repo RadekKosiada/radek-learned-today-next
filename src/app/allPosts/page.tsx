@@ -20,7 +20,9 @@ export default function AllPosts({
 }) {
     const [activeCategories, setActiveCategories] = useState(Array<string>);
     const [filterDateDescending, setFilterDateDescending] = useState(true);
-    const [numOfShownPosts, setNumOfShownPosts] = useState(postsArray.length);
+    const [numOfShownPosts, setNumOfShownPosts] = useState(
+        postsArray.length || 0
+    );
     const [sortedPosts, setSortedPosts] = useState(Array<TypePost>);
     const [dateFilterButtonText, setDateFilterButtonText] =
         useState("From the oldest ⇧");
@@ -73,7 +75,7 @@ export default function AllPosts({
     }, [filterDateDescending]);
 
     useEffect(() => {
-        if (numOfShownPosts === postsArray.length) {
+        if (postsArray.length && numOfShownPosts === postsArray.length) {
             setHeadingText("All Posts");
         } else {
             setHeadingText("Posts");
@@ -90,7 +92,8 @@ export default function AllPosts({
                     <h5 className={styles.numOfShownPosts}>
                         {" "}
                         {numOfShownPosts}
-                        {numOfShownPosts === postsArray.length
+                        {postsArray.length &&
+                        numOfShownPosts === postsArray.length
                             ? ""
                             : `/${postsArray.length}`}
                     </h5>
