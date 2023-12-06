@@ -28,6 +28,11 @@ export default function AllPosts({
         useState("From the oldest ⇧");
     const [headingText, setHeadingText] = useState("All Posts");
 
+    const [hideAbout, setHideAbout] = useState(true);
+    const [aboutTextEdited, setAboutTextEdited] = useState(
+        aboutText.split(".")[0] + "..."
+    );
+
     const handleClick = (category: string) => {
         if (!activeCategories.includes(category)) {
             setActiveCategories([...activeCategories, category]);
@@ -88,10 +93,27 @@ export default function AllPosts({
         }
     }, [numOfShownPosts, postsArray, postsArray.length]);
 
+    const handleShowMoreAbout = () => {
+        setHideAbout(!hideAbout);
+    };
+
+    useEffect(() => {
+        if (!hideAbout) {
+            setAboutTextEdited(aboutText);
+        } else {
+            setAboutTextEdited(aboutText.split(".")[0] + "...");
+        }
+    }, [hideAbout, aboutText]);
+
     return (
         <div className={styles.container}>
             <>
-                <AboutComponent title={"About"} text={aboutText} />
+                <AboutComponent
+                    title="About"
+                    text={aboutTextEdited}
+                    handleShowMoreAbout={handleShowMoreAbout}
+                    hideAbout={hideAbout}
+                />
 
                 <div className={styles.postsHeadingWrapper}>
                     <h1 className={styles.postsHeading}>{headingText} </h1>
