@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TypePost } from "../../../types/contentful";
-import { TypeCategory } from "../../../types/contentful/TypeCategory";
-import { sortPosts } from "../../../utils";
-import AboutComponent from "../components/aboutComponent";
+import { TypePost } from "../../../../types/contentful";
+import { TypeCategory } from "../../../../types/contentful/TypeCategory";
+import { sortPosts } from "../../../../utils";
+import AboutComponent from "../aboutComponent";
 import styles from "./posts.module.scss";
-import PostsContainer from "../components/postsContainer";
-import Filters from "../components/filters";
+import PostsContainer from "../postsContainer";
+import Filters from "../filters";
 
 export default function AllPosts({
     postsArray,
@@ -47,9 +47,9 @@ export default function AllPosts({
                     post.fields.category.fields.title &&
                     activeCategories.includes(post.fields.category.fields.title)
             );
-            setNumOfShownPosts(filteredPosts.length || 0);
+            setNumOfShownPosts((filteredPosts && filteredPosts.length) || 0);
         } else {
-            if (postsArray.length) {
+            if (postsArray && postsArray.length) {
                 setNumOfShownPosts(postsArray.length);
             }
         }
@@ -77,12 +77,16 @@ export default function AllPosts({
     }, [filterDateDescending, postsArray]);
 
     useEffect(() => {
-        if (postsArray.length && numOfShownPosts === postsArray.length) {
+        if (
+            postsArray &&
+            postsArray.length &&
+            numOfShownPosts === postsArray.length
+        ) {
             setHeadingText("All Posts");
         } else {
             setHeadingText("Posts");
         }
-    }, [numOfShownPosts, postsArray.length]);
+    }, [numOfShownPosts, postsArray, postsArray.length]);
 
     return (
         <div className={styles.container}>
@@ -94,7 +98,8 @@ export default function AllPosts({
                     <h5 className={styles.numOfShownPosts}>
                         {" "}
                         {numOfShownPosts}
-                        {postsArray.length &&
+                        {postsArray &&
+                        postsArray.length &&
                         numOfShownPosts === postsArray.length
                             ? ""
                             : `/${postsArray.length}`}

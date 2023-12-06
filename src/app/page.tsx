@@ -2,7 +2,7 @@ import { responseTypeCategories } from "../../types/contentful/TypeCategory";
 import { responseTypePosts } from "../../types/contentful/TypePost";
 import Header from "./components/header";
 import { client } from "./lib/contentful/client";
-import AllPosts from "./allPosts/page";
+import AllPosts from "./components/allPosts";
 import main from "./main.module.scss";
 
 // https://nextjs.org/docs/app/building-your-application/caching#request-memoization
@@ -21,6 +21,8 @@ export async function getCategories() {
 }
 
 export async function getAbout() {
+    // to adjust type asap
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     const response: any = await client.getEntries({
         content_type: "about",
     });
@@ -28,6 +30,8 @@ export async function getAbout() {
 }
 
 export async function getAboutMe() {
+    // to adjust type asap
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     const response: any = await client.getEntries({
         content_type: "aboutMe",
     });
