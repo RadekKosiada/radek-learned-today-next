@@ -40,16 +40,18 @@ export default function AllPosts({
     };
 
     useEffect(() => {
-        if (activeCategories.length) {
+        if (activeCategories && activeCategories.length) {
             const filteredPosts = postsArray.filter(
                 (post) =>
                     post.fields.category &&
                     post.fields.category.fields.title &&
                     activeCategories.includes(post.fields.category.fields.title)
             );
-            setNumOfShownPosts(filteredPosts.length);
+            setNumOfShownPosts(filteredPosts.length || 0);
         } else {
-            setNumOfShownPosts(postsArray.length);
+            if (postsArray.length) {
+                setNumOfShownPosts(postsArray.length);
+            }
         }
     }, [postsArray, activeCategories]);
 
@@ -72,7 +74,7 @@ export default function AllPosts({
 
         setSortedPosts(sortedAccordingToDate);
         setDateFilterButtonText(buttonText);
-    }, [filterDateDescending]);
+    }, [filterDateDescending, postsArray]);
 
     useEffect(() => {
         if (postsArray.length && numOfShownPosts === postsArray.length) {
