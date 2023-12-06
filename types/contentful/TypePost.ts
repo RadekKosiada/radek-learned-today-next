@@ -4,9 +4,9 @@ import type { TypeCategoryFields } from "./TypeCategory";
 export interface TypePostFields {
     title?: EntryFields.Symbol;
     slug?: EntryFields.Symbol;
-    publishDate?: EntryFields.Date;
+    publishDate: EntryFields.Date;
     body?: EntryFields.Text;
-    category?: Entry<TypeCategoryFields>;
+    category: Entry<TypeCategoryFields>;
     postRichText?: EntryFields.RichText;
 }
 

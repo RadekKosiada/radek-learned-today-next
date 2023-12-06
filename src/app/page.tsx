@@ -1,5 +1,8 @@
 import { responseTypeCategories } from "../../types/contentful/TypeCategory";
 import { responseTypePosts } from "../../types/contentful/TypePost";
+import { responseTypeAbout } from "../../types/contentful/TypeAbout";
+import { responseTypeAboutMe } from "../../types/contentful/TypeAboutMe";
+
 import Header from "./components/header";
 import { client } from "./lib/contentful/client";
 import AllPosts from "./components/allPosts";
@@ -21,18 +24,14 @@ export async function getCategories() {
 }
 
 export async function getAbout() {
-    // to adjust type asap
-    /* eslint-disable  @typescript-eslint/no-explicit-any */
-    const response: any = await client.getEntries({
+    const response: responseTypeAbout = await client.getEntries({
         content_type: "about",
     });
     return response;
 }
 
 export async function getAboutMe() {
-    // to adjust type asap
-    /* eslint-disable  @typescript-eslint/no-explicit-any */
-    const response: any = await client.getEntries({
+    const response: responseTypeAboutMe = await client.getEntries({
         content_type: "aboutMe",
     });
     return response;
