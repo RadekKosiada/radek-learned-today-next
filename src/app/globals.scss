@@ -1,5 +1,6 @@
 @import "../variables.module.scss";
 * {
+    color: white;
     h1,
     h2,
     h3,
@@ -14,6 +15,7 @@
     button {
         font-family: $font-family;
     }
+
     code {
         padding-left: 3px;
         padding-right: 3px;
