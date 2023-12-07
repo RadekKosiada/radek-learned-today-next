@@ -14,4 +14,15 @@
     code {
         background-color: $white-color;
     }
+
+    h3 {
+        color: $primary-color;
+        font-weight: $font-weight-bold;
+    }
+}
+.date {
+    padding-top: 0.67em;
+    padding-left: $main-padding;
+    padding-right: $main-padding;
+    border-top: $border;
 }

@@ -23,13 +23,14 @@ export default async function Slug({ params }: { params: { slug: string } }) {
     return (
         <>
             <Header />
-            <div className={styles.postWrapper}>
-                {title && category && (
-                    <h3>
-                        {category.fields.title}: {title}
-                    </h3>
-                )}
-                {/* {category?.fields.icon?.fields.file && (
+            <>
+                <div className={styles.postWrapper}>
+                    {title && category && (
+                        <h3>
+                            {category.fields.title}: {title}
+                        </h3>
+                    )}
+                    {/* {category?.fields.icon?.fields.file && (
                     <Image
                         src={`https:${category.fields.icon.fields.file.url}`}
                         alt={"abc"}
@@ -38,9 +39,14 @@ export default async function Slug({ params }: { params: { slug: string } }) {
                     />
                 )} */}
 
-                {body && <ReactMarkdown>{body}</ReactMarkdown>}
-                {publishDate && <p>published: {formatDate(publishDate)}</p>}
-            </div>
+                    {body && <ReactMarkdown>{body}</ReactMarkdown>}
+                </div>
+                {publishDate && (
+                    <p className={styles.date}>
+                        published: {formatDate(publishDate)}
+                    </p>
+                )}
+            </>
         </>
     );
 }

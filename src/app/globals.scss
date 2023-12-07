@@ -7,7 +7,7 @@
     h4,
     h5,
     h6 {
-        font-weight: 300;
+        font-weight: $font-weight-normal;
     }
     code {
         padding-left: 3px;
@@ -24,6 +24,6 @@ body {
         color: $primary-color;
         text-transform: uppercase;
         font-size: $font-size-heading;
-        font-weight: 300;
+        font-weight: $font-weight-normal;
     }
 }
