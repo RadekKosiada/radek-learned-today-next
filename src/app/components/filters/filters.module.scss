@@ -77,7 +77,7 @@ ul.categoriesWrapper {
     color: $white-color;
 }
 
-@media screen and (max-width: 868px) {
+@media screen and (max-width: 1040px) {
     .filterWrapper.filterWrapperVisible {
         height: 260px;
     }
@@ -91,7 +91,7 @@ ul.categoriesWrapper {
 
 @media screen and (max-width: 515px) {
     .filterWrapper.filterWrapperVisible {
-        height: 340px;
+        height: 380px;
     }
 }
 
