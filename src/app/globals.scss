@@ -1,6 +1,5 @@
 @import "../variables.module.scss";
 * {
-    font-family: $font-family;
     h1,
     h2,
     h3,
@@ -8,6 +7,12 @@
     h5,
     h6 {
         font-weight: $font-weight-normal;
+        font-family: $font-family;
+    }
+    p,
+    a,
+    button {
+        font-family: $font-family;
     }
     code {
         padding-left: 3px;
