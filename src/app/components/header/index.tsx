@@ -1,9 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import styles from "./header.module.scss";
 import { usePathname } from "next/navigation";
 import { MouseEvent, useEffect, useState } from "react";
+import variables from "../../../variables.module.scss";
+import Duck from "@/app/components/icons/duck";
+import Link from "next/link";
+import styles from "./header.module.scss";
 
 export default function Header() {
     const pathname = usePathname();
@@ -34,16 +36,20 @@ export default function Header() {
     return (
         <header className={styles.headerWrapper}>
             <nav>
+                <div className={styles.mainLogo}>
+                    <Link href={homePathname}>
+                        <Duck
+                            size={variables.fontSizeHalf}
+                            fillColor={variables.primaryColor}
+                        />
+                    </Link>
+                </div>
+
                 <ul
                     className={
                         burgerIsChecked ? styles.vertical : styles.horizontal
                     }
                 >
-                    {pathname !== homePathname && (
-                        <li key="posts">
-                            <Link href={homePathname}>Back to Posts</Link>
-                        </li>
-                    )}
                     {pathname !== playgroundPathname && (
                         <li key={"playground"}>
                             <Link href={playgroundPathname}>Playground</Link>

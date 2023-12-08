@@ -6,56 +6,59 @@
     position: sticky;
     z-index: 10;
     top: 0;
-    justify-content: end;
-    align-items: center;
     padding-left: $main-padding;
     padding-right: $main-padding;
     background-color: $bg-primary-color;
     border-bottom: $border;
-}
 
-.headerWrapper {
-    ul {
+    nav {
         display: grid;
-        list-style-type: none;
-    }
-    .horizontal {
-        grid-template-columns: auto auto auto;
-        li {
-            padding: 0 10px;
-        }
-    }
+        grid-template-columns: auto 1fr;
+        align-items: center;
 
-    .vertical {
-        display: none;
-        width: 100%;
-        grid-template-rows: auto auto auto;
-        position: absolute;
-        top: calc($font-size-heading - 13px);
-        left: -40px;
-        z-index: 10;
-        background-color: $bg-primary-color;
-        border-bottom: $border;
-        box-shadow: $box-shadow;
-        li {
-            text-align: center;
-            padding: 10px 0;
+        ul {
+            justify-self: end;
+            display: grid;
+            list-style-type: none;
         }
-        li:first-child {
-            padding-top: 20px;
+        .horizontal {
+            grid-template-columns: auto auto;
+            li {
+                padding: 0 10px;
+            }
         }
-        li:last-child {
-            padding-bottom: 20px;
-        }
-    }
 
-    a {
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: $font-size-nav;
-        color: $primary-color;
-        &:hover {
-            text-decoration: underline;
+        .vertical {
+            display: none;
+            width: 100%;
+            grid-template-rows: auto auto;
+            position: absolute;
+            top: calc($font-size-heading - 13px);
+            left: -40px;
+            z-index: 10;
+            background-color: $bg-primary-color;
+            border-bottom: $border;
+            box-shadow: $box-shadow;
+            li {
+                text-align: center;
+                padding: 10px 0;
+            }
+            li:first-child {
+                padding-top: 20px;
+            }
+            li:last-child {
+                padding-bottom: 20px;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: $font-size-nav;
+            color: $primary-color;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
@@ -66,6 +69,7 @@
     height: 30px;
     width: 30px;
     align-items: center;
+    justify-self: end;
 
     input {
         display: none;

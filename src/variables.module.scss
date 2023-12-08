@@ -1,5 +1,6 @@
 $font-family: Arial, Helvetica, sans-serif;
 $font-size-heading: 70px;
+$font-size-half: calc($font-size-heading / 2);
 $font-size-nav: calc($font-size-heading / 3);
 
 $font-weight-normal: 300;
@@ -59,4 +60,5 @@ $box-shadow-toggle-hover: 0 4px 4px 0 $shadow-color;
     whiteColor: $white-color;
     whiteWithOpacity: $white-w-opacity;
     fontSizeNav: $font-size-nav;
+    fontSizeHalf: $font-size-half;
 }
