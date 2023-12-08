@@ -14,12 +14,40 @@
     border-bottom: $border;
 }
 
-.headerWrapper ul {
-    display: grid;
-    list-style-type: none;
-    grid-template-columns: auto auto;
-    gap: 30px;
-    text-align: right;
+.headerWrapper {
+    ul {
+        display: grid;
+        list-style-type: none;
+    }
+    .horizontal {
+        grid-template-columns: auto auto auto;
+        li {
+            padding: 0 10px;
+        }
+    }
+
+    .vertical {
+        display: none;
+        width: 100%;
+        grid-template-rows: auto auto auto;
+        position: absolute;
+        top: calc($font-size-heading - 13px);
+        left: -40px;
+        z-index: 10;
+        background-color: $bg-primary-color;
+        border-bottom: $border;
+        box-shadow: $box-shadow;
+        li {
+            text-align: center;
+            padding: 10px 0;
+        }
+        li:first-child {
+            padding-top: 20px;
+        }
+        li:last-child {
+            padding-bottom: 20px;
+        }
+    }
 
     a {
         text-decoration: none;
@@ -32,6 +60,74 @@
     }
 }
 
-ul.tripleColumn {
-    grid-template-columns: auto auto auto;
+.checkboxWrapper {
+    display: none;
+    position: relative;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+
+    input {
+        display: none;
+    }
+}
+
+.menuButton {
+    display: none;
+    top: 12px;
+}
+
+.menuButton,
+.menuButton::after,
+.menuButton::before {
+    display: grid;
+    background-color: $primary-color;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: $border-radius;
+}
+
+.menuButton::before {
+    content: "";
+    margin-top: -8px;
+}
+
+.menuButton::after {
+    content: "";
+    margin-top: 8px;
+}
+
+.checkboxWrapper input:checked + .menuButton::before {
+    margin-top: 0px;
+    transform: rotate(45deg);
+}
+
+.checkboxWrapper input:checked + .menuButton {
+    margin-top: 0px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.checkboxWrapper input:checked + .menuButton::after {
+    margin-top: 0px;
+    transform: rotate(-45deg);
+}
+
+@media only screen and (max-width: 992px) {
+    .headerWrapper ul.horizontal {
+        display: none;
+    }
+
+    .headerWrapper ul.vertical {
+        display: grid;
+    }
+
+    .checkboxWrapper {
+        display: grid;
+    }
+
+    .menuButton {
+        display: block;
+    }
 }
