@@ -52,12 +52,22 @@ export default function Header() {
                 >
                     {pathname !== playgroundPathname && (
                         <li key={"playground"}>
-                            <Link href={playgroundPathname}>Playground</Link>
+                            <Link
+                                href={playgroundPathname}
+                                aria-label="Go to Playground"
+                            >
+                                Playground
+                            </Link>
                         </li>
                     )}
                     {pathname !== aboutPathname && (
                         <li key="about">
-                            <Link href={aboutPathname}>About me</Link>
+                            <Link
+                                href={aboutPathname}
+                                aria-label="Back to About Me page"
+                            >
+                                About me
+                            </Link>
                         </li>
                     )}
                 </ul>
