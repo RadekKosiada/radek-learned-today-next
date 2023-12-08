@@ -1,8 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import styles from "./about.module.scss";
-import Duck from "@/app/components/icons/duck";
 import variables from "../../../variables.module.scss";
-
+import Plus from "../icons/plus";
 export default function AboutComponent({
     title,
     text,
@@ -19,22 +18,23 @@ export default function AboutComponent({
             <div className={styles.aboutHeader}>
                 <h1>{title}</h1>
 
-                <Duck
-                    size={variables.fontSizeNav}
-                    fillColor={variables.primaryColor}
-                />
-            </div>
-            <div className={styles.textWrapper}>
-                <ReactMarkdown>{text}</ReactMarkdown>
                 {handleShowMoreAbout && (
                     <button
                         type="button"
-                        className={styles.showMore}
+                        className={
+                            hideAbout ? styles.showMore : styles.showLess
+                        }
                         onClick={handleShowMoreAbout}
                     >
-                        {hideAbout ? "...show more" : "show less"}
+                        <Plus
+                            size={variables.fontSizeNav}
+                            fillColor={variables.primaryColor}
+                        />
                     </button>
                 )}
+            </div>
+            <div className={styles.textWrapper}>
+                <ReactMarkdown>{text}</ReactMarkdown>
             </div>
         </div>
     );

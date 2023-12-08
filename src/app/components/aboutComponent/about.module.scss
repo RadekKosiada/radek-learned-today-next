@@ -11,20 +11,29 @@
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: baseline;
+
+    .showMore,
+    .showLess {
+        border: none;
+        background-color: $bg-primary-color;
+        padding: 0;
+
+        svg {
+            transition: transform 1s ease-in-out;
+            transform: rotate(0deg);
+            cursor: pointer;
+        }
+
+        svg:hover {
+            transform: rotate(135deg);
+        }
+    }
+
+    .showLess {
+        transform: rotate(45deg);
+    }
 }
 
 .textWrapper p {
     margin-bottom: 10px;
-}
-.showMore {
-    border: none;
-    font-weight: $font-weight-bold;
-    background-color: $bg-primary-color;
-    padding: 0;
-    margin-bottom: 10px;
-    cursor: pointer;
-    color: $primary-color;
-    &:hover {
-        text-decoration: underline;
-    }
 }
