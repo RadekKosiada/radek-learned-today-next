@@ -37,7 +37,7 @@ export default function Header() {
         <header className={styles.headerWrapper}>
             <nav>
                 <div className={styles.mainLogo}>
-                    <Link href={homePathname}>
+                    <Link href={homePathname} aria-label="Back to home page">
                         <Duck
                             size={variables.fontSizeHalf}
                             fillColor={variables.primaryColor}
