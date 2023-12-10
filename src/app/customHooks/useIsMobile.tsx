@@ -1,21 +1,22 @@
+"use client";
 import { useState, useEffect } from "react";
 
 export default function useIsMobile() {
-    const [isMobile, setIsMobile] = useState(
-        window.matchMedia("(max-width: 991px)").matches
-    );
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         const mediaQueryList = window.matchMedia("(max-width: 991px)");
 
-        const handleResize = () => {
+        const handleMediaQueryList = () => {
             setIsMobile(mediaQueryList.matches);
         };
 
-        mediaQueryList.addEventListener("change", handleResize);
+        // to check the size after component mounts
+        handleMediaQueryList();
+        mediaQueryList.addEventListener("change", handleMediaQueryList);
 
         return () => {
-            mediaQueryList.removeEventListener("change", handleResize);
+            mediaQueryList.removeEventListener("change", handleMediaQueryList);
         };
     }, []);
 
