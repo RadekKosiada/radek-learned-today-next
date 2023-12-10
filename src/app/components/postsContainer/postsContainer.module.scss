@@ -28,6 +28,7 @@ li.post {
         text-decoration: none;
     }
     h3 {
+        overflow-wrap: anywhere;
         color: $black-color;
 
         &:hover {
