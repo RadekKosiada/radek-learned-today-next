@@ -1,33 +1,23 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { MouseEvent, useEffect, useState } from "react";
+import { MouseEvent, useState } from "react";
 import variables from "../../../variables.module.scss";
 import Duck from "@/app/components/icons/duck";
 import Link from "next/link";
 import styles from "./header.module.scss";
+import useIsMobile from "@/app/customHooks/useIsMobile";
 
 export default function Header() {
     const pathname = usePathname();
+    const isMobile = useIsMobile();
+    console.log("isMobile: ", isMobile);
     const [burgerIsChecked, setBurgerIsChecked] = useState(false);
 
     const handleCheck = (event: MouseEvent<HTMLElement>) => {
         event.preventDefault();
         setBurgerIsChecked(!burgerIsChecked);
     };
-
-    const handleResize = () => {
-        if (window.innerWidth >= 992) {
-            setBurgerIsChecked(false);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
 
     const homePathname = "/";
     const playgroundPathname = "/playground";
@@ -47,7 +37,9 @@ export default function Header() {
 
                 <ul
                     className={
-                        burgerIsChecked ? styles.vertical : styles.horizontal
+                        isMobile && burgerIsChecked
+                            ? styles.vertical
+                            : styles.horizontal
                     }
                 >
                     {pathname !== playgroundPathname && (
