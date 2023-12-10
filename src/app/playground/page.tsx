@@ -17,7 +17,9 @@ export default function Playground() {
                     <ExampleWrapper
                         child={
                             <>
-                                <p>Example 1</p>
+                                <p>
+                                    Example 1 (see post: 'CSS: Using attr()...')
+                                </p>
                                 <h2
                                     data-text={textExample1}
                                     className={styles.example1Text}
