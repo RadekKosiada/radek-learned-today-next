@@ -11,7 +11,7 @@ import useIsMobile from "@/app/customHooks/useIsMobile";
 export default function Header() {
     const pathname = usePathname();
     const isMobile = useIsMobile();
-    console.log("isMobile: ", isMobile);
+
     const [burgerIsChecked, setBurgerIsChecked] = useState(false);
 
     const handleCheck = (event: MouseEvent<HTMLElement>) => {
