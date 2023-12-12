@@ -18,7 +18,8 @@ export default function Playground() {
                         child={
                             <>
                                 <p>
-                                    Example 1 (see post: 'CSS: Using attr()...')
+                                    Example 1: see also post <br />
+                                    <i>CSS: Using attr()...</i>
                                 </p>
                                 <h2
                                     data-text={textExample1}
