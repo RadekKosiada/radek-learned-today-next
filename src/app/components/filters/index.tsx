@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { TypeCategory } from "../../../../types/contentful/TypeCategory";
 
 import styles from "./filters.module.scss";
 
 export default function Filters({
+    hideFilter,
     categoriesArray,
     handleClick,
     handleCancelClick,
@@ -13,6 +13,7 @@ export default function Filters({
     activeCategories,
     dateFilterButtonText,
 }: {
+    hideFilter: boolean;
     categoriesArray: TypeCategory[];
     handleClick: (category: string) => void;
     handleCancelClick: () => void;
@@ -20,56 +21,10 @@ export default function Filters({
     activeCategories: Array<string>;
     dateFilterButtonText: string;
 }) {
-    const [hideFilter, setHideFilter] = useState(true);
-
-    const [toggleClass, setToggleClass] = useState(styles.toggle);
-    const [toggleContainerClass, setToggleContainerClass] = useState(
-        styles.toggleContainer
-    );
-    const [filterWrapperClass, setFilterWrapperClass] = useState(
-        styles.filterWrapperClass
-    );
-
-    const handleShowCategoryFilters = () => {
-        setHideFilter(!hideFilter);
-    };
-
-    useEffect(() => {
-        setToggleClass(
-            hideFilter
-                ? styles.toggle
-                : [styles.toggle, styles.toggleActive].join(" ")
-        );
-
-        setToggleContainerClass(
-            hideFilter
-                ? styles.toggleContainer
-                : [styles.toggleContainer, styles.toggleContainerActive].join(
-                      " "
-                  )
-        );
-
-        setFilterWrapperClass(
-            hideFilter
-                ? styles.filterWrapper
-                : [styles.filterWrapper, styles.filterWrapperVisible].join(" ")
-        );
-    }, [hideFilter]);
-
     return (
-        <div className={styles.container}>
-            <div className={styles.toggleFilterContainer}>
-                <h4>Filters:</h4>
-                <div
-                    className={toggleContainerClass}
-                    onClick={handleShowCategoryFilters}
-                >
-                    <div className={toggleClass}></div>
-                </div>
-            </div>
-
+        <>
             {!hideFilter && (
-                <div className={filterWrapperClass}>
+                <div className={styles.container}>
                     <h4>Filter posts according to category</h4>
 
                     <ul className={styles.categoriesWrapper}>
@@ -117,6 +72,6 @@ export default function Filters({
                     </button>
                 </div>
             )}
-        </div>
+        </>
     );
 }

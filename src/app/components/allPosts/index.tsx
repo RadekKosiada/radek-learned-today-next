@@ -33,6 +33,17 @@ export default function AllPosts({
         aboutText.split(".")[0] + "..."
     );
 
+    const [toggleClass, setToggleClass] = useState(styles.toggle);
+    const [toggleContainerClass, setToggleContainerClass] = useState(
+        styles.toggleContainer
+    );
+
+    const [hideFilter, setHideFilter] = useState(true);
+
+    const handleShowCategoryFilters = () => {
+        setHideFilter(!hideFilter);
+    };
+
     const handleClick = (category: string) => {
         if (!activeCategories.includes(category)) {
             setActiveCategories([...activeCategories, category]);
@@ -105,6 +116,22 @@ export default function AllPosts({
         }
     }, [hideAbout, aboutText]);
 
+    useEffect(() => {
+        setToggleClass(
+            hideFilter
+                ? styles.toggle
+                : [styles.toggle, styles.toggleActive].join(" ")
+        );
+
+        setToggleContainerClass(
+            hideFilter
+                ? styles.toggleContainer
+                : [styles.toggleContainer, styles.toggleContainerActive].join(
+                      " "
+                  )
+        );
+    }, [hideFilter]);
+
     return (
         <div className={styles.container}>
             <>
@@ -116,19 +143,30 @@ export default function AllPosts({
                 />
 
                 <div className={styles.postsHeadingWrapper}>
-                    <h1 className={styles.postsHeading}>{headingText} </h1>
-                    <h5 className={styles.numOfShownPosts}>
-                        {" "}
-                        {numOfShownPosts}
-                        {postsArray &&
-                        postsArray.length &&
-                        numOfShownPosts === postsArray.length
-                            ? ""
-                            : `/${postsArray.length}`}
-                    </h5>
+                    <div>
+                        <h1 className={styles.postsHeading}>
+                            {headingText}{" "}
+                            <span className={styles.numOfShownPosts}>
+                                {" "}
+                                {numOfShownPosts}
+                                {postsArray &&
+                                postsArray.length &&
+                                numOfShownPosts === postsArray.length
+                                    ? ""
+                                    : `/${postsArray.length}`}
+                            </span>
+                        </h1>
+                    </div>
+                    <div
+                        className={toggleContainerClass}
+                        onClick={handleShowCategoryFilters}
+                    >
+                        <div className={toggleClass}></div>
+                    </div>
                 </div>
 
                 <Filters
+                    hideFilter={hideFilter}
                     categoriesArray={categoriesArray}
                     handleClick={handleClick}
                     handleCancelClick={handleCancelClick}
