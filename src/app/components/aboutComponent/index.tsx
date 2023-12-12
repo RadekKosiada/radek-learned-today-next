@@ -1,5 +1,5 @@
 "use client";
-import ReactMarkdown from "react-markdown";
+import Markdown from "markdown-to-jsx";
 import styles from "./about.module.scss";
 import variables from "../../../variables.module.scss";
 import Plus from "../icons/plus";
@@ -40,7 +40,7 @@ export default function AboutComponent({
                 )}
             </div>
             <div className={styles.textWrapper}>
-                <ReactMarkdown>{text}</ReactMarkdown>
+                <Markdown>{text}</Markdown>
             </div>
         </div>
     );
