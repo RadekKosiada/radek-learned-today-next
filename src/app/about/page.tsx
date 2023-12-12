@@ -2,7 +2,7 @@ import AboutComponent from "../components/aboutComponent";
 import Header from "../components/header";
 
 import styles from "./about.module.scss";
-import { getAboutMe } from "../page";
+import getAboutMe from "../../api/getAboutMe";
 
 export default async function AboutPage() {
     const responseAbout = await getAboutMe();

@@ -3,7 +3,7 @@ import {
     TypePost,
     responseTypePosts,
 } from "../../../types/contentful/TypePost";
-import { getPosts } from "../page";
+import getPosts from "../../api/getPosts";
 import Header from "../components/header";
 import { formatDate } from "../../../utils";
 import styles from "./slug.module.scss";
