@@ -3,6 +3,7 @@ import Markdown from "markdown-to-jsx";
 import styles from "./about.module.scss";
 
 import PlusButton from "../plusButton";
+import { usePathname } from "next/navigation";
 
 export default function AboutComponent({
     title,
@@ -15,21 +16,29 @@ export default function AboutComponent({
     handleShowMoreAbout?: () => void;
     hideAbout?: boolean;
 }) {
+    const pathname = usePathname();
+
     return (
         <div className={styles.wrapper}>
-            <div className={styles.aboutHeader}>
-                <h1>{title}</h1>
+            <div>
+                <div className={styles.aboutHeader}>
+                    <h1>{title}</h1>
 
-                {handleShowMoreAbout && (
-                    <PlusButton
-                        hideAbout={!!hideAbout}
-                        handleShowMoreAbout={handleShowMoreAbout}
-                    />
-                )}
+                    {handleShowMoreAbout && (
+                        <PlusButton
+                            hideAbout={!!hideAbout}
+                            handleShowMoreAbout={handleShowMoreAbout}
+                        />
+                    )}
+                </div>
+                <div className={styles.textWrapper}>
+                    <Markdown>{text}</Markdown>
+                </div>
             </div>
-            <div className={styles.textWrapper}>
-                <Markdown>{text}</Markdown>
-            </div>
+
+            {pathname === "/about" ? (
+                <div className={styles.pic}></div>
+            ) : undefined}
         </div>
     );
 }

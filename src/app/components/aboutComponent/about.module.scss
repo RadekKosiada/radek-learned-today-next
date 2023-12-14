@@ -5,6 +5,8 @@
     padding-right: $main-padding;
     border-bottom: $border;
     padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
 }
 
 .aboutHeader {
@@ -15,4 +17,12 @@
 
 .textWrapper p {
     margin-bottom: 10px;
+}
+
+.pic {
+    background-image: url("../icons/noun-duck-5921022.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 250px;
+    height: 250px;
 }
