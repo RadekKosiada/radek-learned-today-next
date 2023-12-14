@@ -2,8 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { MouseEvent, useState } from "react";
-import variables from "../../../variables.module.scss";
-import Duck from "@/app/components/icons/duck";
 import Link from "next/link";
 import styles from "./header.module.scss";
 import useIsMobile from "@/app/customHooks/useIsMobile";
@@ -28,10 +26,7 @@ export default function Header() {
             <nav>
                 <div className={styles.mainLogo}>
                     <Link href={homePathname} aria-label="Back to home page">
-                        <Duck
-                            size={variables.fontSizeHalf}
-                            fillColor={variables.primaryColor}
-                        />
+                        <div></div>
                     </Link>
                 </div>
 
