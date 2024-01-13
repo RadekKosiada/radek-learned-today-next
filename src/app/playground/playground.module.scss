@@ -14,6 +14,9 @@
 .exampleWrapper {
     border: 1px solid $primary-color;
     border-radius: 5px;
+}
+
+.example1Container {
     padding: 10px 20px;
 }
 
@@ -33,4 +36,15 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgba(0, 0, 0, 0);
+}
+
+.example2Container {
+    padding: 20px;
+    background: linear-gradient(red, transparent),
+        linear-gradient(to top left, blue, transparent),
+        linear-gradient(to top right, lime, transparent);
+    background-blend-mode: screen;
+    h2 {
+        color: $black-color;
+    }
 }

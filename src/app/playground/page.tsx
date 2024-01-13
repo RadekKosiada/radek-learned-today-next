@@ -8,6 +8,7 @@ function ExampleWrapper({ child }: { child: ReactNode }) {
 
 export default function Playground() {
     const textExample1 = "Heading with interesting backround";
+    const textExample2 = "Div with interesting background effect";
     return (
         <>
             <Header />
@@ -16,7 +17,7 @@ export default function Playground() {
                 <div className={styles.gridWrapper}>
                     <ExampleWrapper
                         child={
-                            <>
+                            <div className={styles.example1Container}>
                                 <p>
                                     Example 1: see also post <br />
                                     <i>CSS: Using attr()...</i>
@@ -27,7 +28,15 @@ export default function Playground() {
                                 >
                                     {textExample1}
                                 </h2>
-                            </>
+                            </div>
+                        }
+                    />
+                    <ExampleWrapper
+                        child={
+                            <div className={styles.example2Container}>
+                                <p>Example 2</p>
+                                <h2>{textExample2}</h2>
+                            </div>
                         }
                     />
                 </div>
