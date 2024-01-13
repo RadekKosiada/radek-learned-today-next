@@ -1,36 +1,43 @@
 @import "../variables.module.scss";
+body {
+    margin: 0;
+    background: linear-gradient($bg-primary-color, transparent),
+        linear-gradient(to top left, black, transparent),
+        linear-gradient(to top right, $bg-secondary-color, transparent);
+    background-blend-mode: screen;
+    background-attachment: fixed;
+
+    h1 {
+        text-transform: uppercase;
+        font-size: $font-size-heading;
+    }
+}
+
 * {
     h1,
     h2,
     h3,
     h4,
     h5,
-    h6 {
+    h6,
+    a {
         font-weight: $font-weight-normal;
         font-family: $font-family;
+        color: $primary-color;
     }
-    p,
-    a,
     button,
     span {
         font-family: $font-family;
+        color: $white-color;
     }
+    p,
+    li {
+        color: $white-color;
+    }
+
     code {
         padding-left: 3px;
         padding-right: 3px;
-    }
-}
-
-html,
-body {
-    margin: 0;
-    background-color: $bg-primary-color;
-
-    h1 {
-        color: $primary-color;
-        text-transform: uppercase;
-        font-size: $font-size-heading;
-        font-weight: $font-weight-normal;
     }
 }
 
