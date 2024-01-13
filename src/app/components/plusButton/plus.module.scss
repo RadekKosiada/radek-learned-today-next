@@ -36,10 +36,6 @@
             content: "";
             transform: rotate(90deg);
         }
-
-        &:hover {
-            transform: rotate(45deg);
-        }
     }
 
     &:hover {
@@ -54,9 +50,5 @@
     div,
     div::after {
         background-color: $bg-primary-color;
-    }
-
-    &:hover {
-        transform: rotate(0deg);
     }
 }
