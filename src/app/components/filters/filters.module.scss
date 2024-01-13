@@ -27,6 +27,5 @@ ul.categoriesWrapper {
 }
 
 .filterIsActive {
-    background-color: $primary-color;
-    color: $white-color;
+    @include primary-button-active;
 }

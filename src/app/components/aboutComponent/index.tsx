@@ -1,7 +1,6 @@
 "use client";
 import Markdown from "markdown-to-jsx";
 import styles from "./about.module.scss";
-
 import PlusButton from "../plusButton";
 
 export default function AboutComponent({

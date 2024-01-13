@@ -5,16 +5,22 @@
     h3,
     h4,
     h5,
-    h6 {
+    h6,
+    a {
         font-weight: $font-weight-normal;
         font-family: $font-family;
+        color: $primary-color;
     }
-    p,
-    a,
     button,
     span {
         font-family: $font-family;
+        color: $white-color;
     }
+    p,
+    li {
+        color: $white-color;
+    }
+
     code {
         padding-left: 3px;
         padding-right: 3px;
