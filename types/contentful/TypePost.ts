@@ -8,6 +8,7 @@ export interface TypePostFields {
     body?: EntryFields.Text;
     category: Entry<TypeCategoryFields>;
     postRichText?: EntryFields.RichText;
+    secondaryCategory?: Entry<TypeCategoryFields>;
 }
 
 export type TypePost = Entry<TypePostFields>;
