@@ -30,11 +30,14 @@ export default function PostsContainer({
                     (!activeCategories.length ||
                         activeCategories.includes(postCategory));
 
+                const showPost2 = secondaryPostCategory &&
+                    activeCategories.includes(secondaryPostCategory);
+
                 const publishDateFormatted = publishDate
                     ? formatDate(publishDate)
                     : "";
                 return (
-                    showPost && (
+                    (showPost || showPost2) && (
                         <li className={styles.post} key={sys.id}>
                             <Link href={`/${slug}`}>
                                 <h3>

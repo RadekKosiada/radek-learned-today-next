@@ -5,9 +5,9 @@ import { TypePost } from "../../../../types/contentful";
 import { TypeCategory } from "../../../../types/contentful/TypeCategory";
 import { sortPosts } from "../../../../utils";
 import AboutComponent from "../aboutComponent";
-import styles from "./posts.module.scss";
-import PostsContainer from "../postsContainer";
 import Filters from "../filters";
+import PostsContainer from "../postsContainer";
+import styles from "./posts.module.scss";
 
 export default function AllPosts({
     postsArray,
@@ -46,6 +46,7 @@ export default function AllPosts({
 
     const handleClick = (category: string) => {
         if (!activeCategories.includes(category)) {
+
             setActiveCategories([...activeCategories, category]);
         } else {
             const newActiveCategories = activeCategories.filter(
@@ -57,12 +58,16 @@ export default function AllPosts({
 
     useEffect(() => {
         if (activeCategories && activeCategories.length) {
+            console.log('hal: ', postsArray[0].fields.secondaryCategory && postsArray[0].fields.secondaryCategory.fields.title && activeCategories.includes(postsArray[0].fields.secondaryCategory.fields.title))
             const filteredPosts = postsArray.filter(
                 (post) =>
                     post.fields.category &&
                     post.fields.category.fields.title &&
-                    activeCategories.includes(post.fields.category.fields.title)
+                    activeCategories.includes(post.fields.category.fields.title) || (post.fields.secondaryCategory && post.fields.secondaryCategory.fields.title &&
+                        activeCategories.includes(post.fields.secondaryCategory.fields.title))
             );
+            // it is being shown in the number of categories!!
+            console.log('filteredPosts: ', filteredPosts)
             setNumOfShownPosts((filteredPosts && filteredPosts.length) || 0);
         } else {
             if (postsArray && postsArray.length) {
@@ -127,8 +132,8 @@ export default function AllPosts({
             hideFilter
                 ? styles.toggleContainer
                 : [styles.toggleContainer, styles.toggleContainerActive].join(
-                      " "
-                  )
+                    " "
+                )
         );
     }, [hideFilter]);
 
@@ -150,8 +155,8 @@ export default function AllPosts({
                                 {" "}
                                 {numOfShownPosts}
                                 {postsArray &&
-                                postsArray.length &&
-                                numOfShownPosts === postsArray.length
+                                    postsArray.length &&
+                                    numOfShownPosts === postsArray.length
                                     ? ""
                                     : `/${postsArray.length}`}
                             </span>
