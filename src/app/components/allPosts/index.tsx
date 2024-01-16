@@ -46,7 +46,6 @@ export default function AllPosts({
 
     const handleClick = (category: string) => {
         if (!activeCategories.includes(category)) {
-
             setActiveCategories([...activeCategories, category]);
         } else {
             const newActiveCategories = activeCategories.filter(
@@ -58,7 +57,6 @@ export default function AllPosts({
 
     useEffect(() => {
         if (activeCategories && activeCategories.length) {
-            console.log('hal: ', postsArray[0].fields.secondaryCategory && postsArray[0].fields.secondaryCategory.fields.title && activeCategories.includes(postsArray[0].fields.secondaryCategory.fields.title))
             const filteredPosts = postsArray.filter(
                 (post) =>
                     post.fields.category &&
@@ -66,8 +64,6 @@ export default function AllPosts({
                     activeCategories.includes(post.fields.category.fields.title) || (post.fields.secondaryCategory && post.fields.secondaryCategory.fields.title &&
                         activeCategories.includes(post.fields.secondaryCategory.fields.title))
             );
-            // it is being shown in the number of categories!!
-            console.log('filteredPosts: ', filteredPosts)
             setNumOfShownPosts((filteredPosts && filteredPosts.length) || 0);
         } else {
             if (postsArray && postsArray.length) {
