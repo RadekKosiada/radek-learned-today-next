@@ -11,19 +11,22 @@
 ul.categoriesWrapper {
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: $small-grid-gap;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: $big-grid-gap;
     padding: 0;
 
     button {
         text-transform: uppercase;
         font-weight: $font-weight-bold;
+        padding: 5px;
+        border-radius: 5px;
+        max-width: 200px;
     }
 }
 
 .categoryFilter {
     @include primary-button;
-    max-width: 150px;
+    max-width: 200px;
 }
 
 .filterIsActive {
