@@ -13,25 +13,25 @@
         "cf-generate-types": "npx cf-content-types-generator contentful/export.json --out types/contentful"
     },
     "dependencies": {
-        "contentful": "^10.0.0-beta-v10.8",
-        "markdown-to-jsx": "^7.3.2",
-        "next": "13.5.5",
-        "npm": "^10.2.1",
-        "react": "^18",
-        "react-dom": "^18",
-        "react-markdown": "^9.0.0",
-        "sass": "^1.69.7"
+        "contentful": "^11.7.5",
+        "markdown-to-jsx": "^7.7.10",
+        "next": "15.3.4",
+        "npm": "^11.4.2",
+        "react": "^19",
+        "react-dom": "^19",
+        "react-markdown": "^10.1.0",
+        "sass": "^1.89.2"
     },
     "devDependencies": {
-        "@types/node": "^20",
-        "@types/react": "^18.2.31",
-        "@types/react-dom": "^18",
-        "@typescript-eslint/eslint-plugin": "^6.13.2",
-        "cf-content-types-generator": "^2.12.9",
-        "contentful-cli": "^3.0.6",
-        "eslint": "^8",
-        "eslint-config-next": "13.5.5",
-        "prettier": "3.0.3",
-        "typescript": "^5.3.2"
+        "@types/node": "^24",
+        "@types/react": "^19.1.8",
+        "@types/react-dom": "^19",
+        "@typescript-eslint/eslint-plugin": "^8.35.1",
+        "cf-content-types-generator": "^2.16.0",
+        "contentful-cli": "^3.8.9",
+        "eslint": "^9",
+        "eslint-config-next": "15.3.4",
+        "prettier": "3.6.2",
+        "typescript": "^5.8.3"
     }
 }
