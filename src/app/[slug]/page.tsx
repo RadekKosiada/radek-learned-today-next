@@ -3,13 +3,15 @@ import {
     TypePost,
     responseTypePosts,
 } from "../../../types/contentful/TypePost";
+import { formatDate } from "../../../utils";
 import getPosts from "../../api/getPosts";
 import Header from "../components/header";
-import { formatDate } from "../../../utils";
 import styles from "./slug.module.scss";
 
-export default async function Slug({ params }: { params: { slug: string } }) {
-    const { slug } = params;
+type Params = Promise<{ slug: string }>
+
+export default async function Slug({ params }: { params: { slug: Params } }) {
+    const { slug } = await params;
     const response: responseTypePosts = await getPosts();
 
     const { items } = response;
