@@ -10,7 +10,7 @@ import styles from "./slug.module.scss";
 
 type Params = Promise<{ slug: string }>
 
-export default async function Slug({ params }: { params: { slug: Params } }) {
+export default async function Slug({ params }: { params: Params }) {
     const { slug } = await params;
     const response: responseTypePosts = await getPosts();
 
