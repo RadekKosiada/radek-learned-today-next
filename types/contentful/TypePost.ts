@@ -6,14 +6,14 @@ export interface TypePostFields {
     title?: EntryFields.Symbol;
     slug?: EntryFields.Symbol;
     publishDate: EntryFields.Date;
-    type?: Entry<TypePostTypeFields>[];
+    type?: any[];
     body?: EntryFields.Text;
-    category: Entry<TypeCategoryFields>;
+    category: any;
     postRichText?: EntryFields.RichText;
-    secondaryCategory?: Entry<TypeCategoryFields>;
+    secondaryCategory?: any;
 }
 
-export type TypePost = Entry<TypePostFields>;
+export type TypePost = Entry<any>;
 
 export type responseTypePosts = {
     items: TypePost[];

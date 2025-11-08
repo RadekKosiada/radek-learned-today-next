@@ -6,4 +6,4 @@ export interface TypePageFields {
     body?: EntryFields.Text;
 }
 
-export type TypePage = Entry<TypePageFields>;
+export type TypePage = Entry<any>;

@@ -6,7 +6,7 @@ export interface TypeCategoryFields {
     icon?: Asset;
 }
 
-export type TypeCategory = Entry<TypeCategoryFields>;
+export type TypeCategory = Entry<any>;
 
 export type responseTypeCategories = {
     items: TypeCategory[];

@@ -4,7 +4,7 @@ export interface TypeAboutMeFields {
     body: EntryFields.Text;
 }
 
-export type TypeAboutMe = Entry<TypeAboutMeFields>;
+export type TypeAboutMe = Entry<any>;
 
 export type responseTypeAboutMe = {
     items: TypeAboutMe[];
