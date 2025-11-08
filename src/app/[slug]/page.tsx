@@ -5,7 +5,7 @@ import {
     TypePostFields,
     responseTypePosts,
 } from "../../../types/contentful/TypePost";
-import { formatDate } from "../../../utils";
+import { formatDate, isEntryWithFields } from "../../../utils";
 import getPosts from "../../api/getPosts";
 import Header from "../components/header";
 import styles from "./slug.module.scss";
@@ -20,14 +20,16 @@ export default async function Slug({ params }: { params: Params }) {
 
     const post: TypePost | undefined = items.find(
         (item): item is TypePost =>
-            'fields' in item &&
-            item.fields &&
+            isEntryWithFields<TypePostFields>(item) &&
             'slug' in item.fields &&
             item.fields.slug === slug
     );
 
     const fields = post?.fields as TypePostFields | undefined;
-    const { title, category, publishDate, body } = fields || {};
+    const title = fields?.title;
+    const category = fields?.category;
+    const publishDate = fields?.publishDate;
+    const body = fields?.body;
     const categoryFields = category?.fields as TypeCategoryFields | undefined;
 
     return (
