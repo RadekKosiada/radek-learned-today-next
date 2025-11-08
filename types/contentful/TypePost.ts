@@ -1,6 +1,4 @@
 import type { Entry, EntryFields } from "contentful";
-import type { TypeCategoryFields } from "./TypeCategory";
-import type { TypePostTypeFields } from "./TypePostType";
 
 export interface TypePostFields {
     title?: EntryFields.Symbol;
