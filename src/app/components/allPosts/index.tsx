@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TypePost } from "../../../../types/contentful";
-import { TypeCategory } from "../../../../types/contentful/TypeCategory";
-import { sortPosts } from "../../../../utils";
+import { TypePost, TypePostFields } from "../../../../types/contentful";
+import { TypeCategory, TypeCategoryFields } from "../../../../types/contentful/TypeCategory";
+import { isEntryWithFields, sortPosts } from "../../../../utils";
 import AboutComponent from "../aboutComponent";
 import Filters from "../filters";
 import PostsContainer from "../postsContainer";
@@ -58,11 +58,16 @@ export default function AllPosts({
     useEffect(() => {
         if (activeCategories && activeCategories.length) {
             const filteredPosts = postsArray.filter(
-                (post) =>
-                    post.fields.category &&
-                    post.fields.category.fields.title &&
-                    activeCategories.includes(post.fields.category.fields.title) || (post.fields.secondaryCategory && post.fields.secondaryCategory.fields.title &&
-                        activeCategories.includes(post.fields.secondaryCategory.fields.title))
+                (post): post is TypePost => {
+                    if (!isEntryWithFields<TypePostFields>(post)) return false;
+                    const fields = post.fields as TypePostFields;
+
+                    const categoryFields = fields.category?.fields as TypeCategoryFields | undefined;
+                    const secondaryCategoryFields = fields.secondaryCategory?.fields as TypeCategoryFields | undefined;
+
+                    return Boolean(categoryFields?.title && activeCategories.includes(categoryFields.title)) ||
+                        Boolean(secondaryCategoryFields?.title && activeCategories.includes(secondaryCategoryFields.title));
+                }
             );
             setNumOfShownPosts((filteredPosts && filteredPosts.length) || 0);
         } else {

@@ -22,12 +22,8 @@ export const sortPosts = (
     order: "descending" | "ascending"
 ) => {
     const sortedArray = [...postsArray].sort((a, b) => {
-        const {
-            fields: { publishDate: publishDateA },
-        } = a;
-        const {
-            fields: { publishDate: publishDateB },
-        } = b;
+        const publishDateA = (a as any)?.fields?.publishDate;
+        const publishDateB = (b as any)?.fields?.publishDate;
 
         if (!publishDateA && !publishDateB) return 0; // both have no publishDate
         if (!publishDateA) return 1; // a has no publishDate, so b comes first
@@ -42,3 +38,8 @@ export const sortPosts = (
 
     return sortedArray;
 };
+
+// Generic type-guard: checks that the value is a contentful Entry with `fields`
+export function isEntryWithFields<T>(x: any): x is { fields: T } {
+    return !!x && typeof x === "object" && "fields" in x && x.fields != null;
+}

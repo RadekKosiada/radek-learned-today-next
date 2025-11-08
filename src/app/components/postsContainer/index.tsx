@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 
-import { TypePost } from "../../../../types/contentful";
-import { formatDate } from "../../../../utils";
+import { TypePost, TypePostFields } from "../../../../types/contentful";
+import { TypeCategoryFields } from "../../../../types/contentful/TypeCategory";
+import { formatDate, isEntryWithFields } from "../../../../utils";
 import styles from "./postsContainer.module.scss";
 
 export default function PostsContainer({
@@ -16,13 +17,13 @@ export default function PostsContainer({
     return (
         <ul className={styles.postsWrapper}>
             {sortedPosts.map((post: TypePost) => {
-                const {
-                    sys,
-                    fields: { title: postTitle, category, slug, publishDate, secondaryCategory },
-                } = post || {};
+                if (!isEntryWithFields<TypePostFields>(post)) return null;
 
-                const { title: postCategory } = category?.fields || {};
-                const { title: secondaryPostCategory } = secondaryCategory?.fields || {};
+                const sys = post.sys;
+                const { title: postTitle, category, slug, publishDate, secondaryCategory } = post.fields as TypePostFields;
+
+                const postCategory = (category?.fields as TypeCategoryFields | undefined)?.title;
+                const secondaryPostCategory = (secondaryCategory?.fields as TypeCategoryFields | undefined)?.title;
 
                 const showPost =
                     category &&

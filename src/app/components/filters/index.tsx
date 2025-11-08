@@ -1,6 +1,7 @@
 "use client";
 
-import { TypeCategory } from "../../../../types/contentful/TypeCategory";
+import { TypeCategory, TypeCategoryFields } from "../../../../types/contentful/TypeCategory";
+import { isEntryWithFields } from "../../../../utils";
 
 import styles from "./filters.module.scss";
 
@@ -40,13 +41,14 @@ export default function Filters({
                             Cancel
                         </button>
                         {categoriesArray.map((category: TypeCategory) => {
-                            const {
-                                sys,
-                                fields: { title },
-                            } = category || {};
+                            const sys = category.sys;
+                            const title = isEntryWithFields<TypeCategoryFields>(category)
+                                ? (category.fields as TypeCategoryFields).title
+                                : undefined;
 
                             const isFilterActive =
-                                title && activeCategories.includes(title);
+                                typeof title === "string" &&
+                                activeCategories.includes(title);
                             const categoryClassName = [
                                 styles.categoryFilter,
                                 isFilterActive ? styles.filterIsActive : "",
@@ -54,7 +56,7 @@ export default function Filters({
 
                             return (
                                 <li
-                                    onClick={() => title && handleClick(title)}
+                                    onClick={() => typeof title === "string" && handleClick(title)}
                                     className={categoryClassName}
                                     key={sys.id}
                                 >
